@@ -174,9 +174,10 @@ img { display: block; max-width: 100%; }
 }
 .dest-panel-content {
   position: absolute; left: 0; right: 0; bottom: 0;
-  padding: clamp(20px, 3vw, 36px) clamp(20px, 2.5vw, 32px);
+  padding: clamp(24px, 3vw, 40px) clamp(24px, 3vw, 36px);
   z-index: 2;
 }
+.dest-panel-name { overflow: hidden; text-overflow: ellipsis; }
 .dest-panel-region {
   font-size: 9.5px; letter-spacing: 0.2em; color: var(--bronze);
   text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-weight: 500;

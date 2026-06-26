@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { REGIONS, SITE, SERVICES } from "@/lib/content";
+import { REGIONS, SERVICES, SITE } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
-import CTASection from "@/components/CTASection";
 
 export async function generateStaticParams() {
   return REGIONS.map((r) => ({ slug: r.slug }));
@@ -20,7 +19,7 @@ export async function generateMetadata({
   const region = REGIONS.find((r) => r.slug === slug);
   if (!region) return {};
   return {
-    title: `${region.name} Ski Travel`,
+    title: `${region.name} Ski Travel — Patagonia Living`,
     description: region.blurb,
   };
 }
@@ -44,224 +43,382 @@ export default async function DestinationPage({
 
         {/* ── Hero ── */}
         <section
-          className="relative overflow-hidden"
-          style={{ height: "88vh", minHeight: 580 }}
+          style={{
+            position: "relative",
+            height: "85vh",
+            minHeight: 560,
+            overflow: "hidden",
+            background: "#0a0c0f",
+          }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={region.image}
             alt={region.name}
-            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              filter: "saturate(0.82) brightness(0.48)",
+            }}
           />
           <div
-            className="absolute inset-0"
             style={{
+              position: "absolute",
+              inset: 0,
               background:
-                "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.82) 100%)",
+                "linear-gradient(180deg, rgba(10,12,15,0.3) 0%, transparent 35%, rgba(10,12,15,0.88) 100%)",
             }}
           />
 
-          {/* Back */}
-          <div className="absolute top-8 left-[clamp(20px,4vw,52px)] z-10">
+          {/* Back link */}
+          <div
+            style={{
+              position: "absolute",
+              top: "clamp(24px,3vw,40px)",
+              left: "clamp(24px,4vw,56px)",
+              zIndex: 10,
+            }}
+          >
             <Link
               href="/#destinations"
               style={{
-                background: "rgba(255,255,255,0.12)",
+                background: "rgba(255,255,255,0.10)",
                 backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                border: "1px solid rgba(255,255,255,0.20)",
-                borderRadius: 50,
+                border: "1px solid rgba(255,255,255,0.16)",
+                borderRadius: 100,
                 padding: "9px 18px",
-                fontSize: 13,
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 10,
                 fontWeight: 500,
-                color: "rgba(255,255,255,0.88)",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "rgba(242,239,232,0.80)",
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 6,
-                transition: "background 0.25s ease",
               }}
             >
-              ← All destinations
+              ← All Destinations
             </Link>
           </div>
 
           {/* Hero text */}
           <div
-            className="absolute bottom-0 left-0 right-0 p-[clamp(24px,4vw,56px)]"
-            style={{ zIndex: 5 }}
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              padding: "clamp(28px,4vw,60px)",
+              zIndex: 5,
+            }}
           >
             <p
-              className="text-[11px] font-medium tracking-[0.14em] uppercase mb-3"
-              style={{ color: "rgba(255,255,255,0.50)" }}
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 10,
+                fontWeight: 500,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "#B8965A",
+                marginBottom: 14,
+              }}
             >
               {region.region}
             </p>
             <h1
-              className="display-xl"
-              style={{ color: "rgba(255,255,255,0.96)" }}
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(52px,8vw,100px)",
+                fontWeight: 300,
+                lineHeight: 0.95,
+                color: "rgba(242,239,232,0.96)",
+                marginBottom: 20,
+              }}
             >
               {region.name}
             </h1>
             <p
-              className="mt-5 max-w-[48ch] text-[17px] leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.72)" }}
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: "clamp(12px,1.2vw,14px)",
+                fontWeight: 300,
+                color: "rgba(242,239,232,0.60)",
+                maxWidth: 500,
+                lineHeight: 1.85,
+                letterSpacing: "0.02em",
+              }}
             >
               {region.blurb}
             </p>
           </div>
         </section>
 
-        {/* ── Resorts ── */}
+        {/* ── Resort bar ── */}
+        <div
+          style={{
+            background: "#2C3E4A",
+            padding: "16px clamp(24px,4vw,56px)",
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            flexWrap: "wrap",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 9,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "#B8965A",
+              whiteSpace: "nowrap",
+              fontWeight: 500,
+            }}
+          >
+            Resorts
+          </span>
+          {region.resorts.map((r, i) => (
+            <span key={r} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <span
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 12,
+                  color: "rgba(242,239,232,0.72)",
+                  fontWeight: 300,
+                }}
+              >
+                {r}
+              </span>
+              {i < region.resorts.length - 1 && (
+                <span style={{ color: "rgba(242,239,232,0.18)", fontSize: 10 }}>·</span>
+              )}
+            </span>
+          ))}
+        </div>
+
+        {/* ── What to expect ── */}
         <section
-          className="section"
-          style={{ background: "var(--background)" }}
+          style={{
+            background: "var(--background)",
+            padding: "clamp(64px,9vw,120px) clamp(24px,5vw,72px)",
+          }}
         >
           <div className="container-x">
-            <div className="reveal grid grid-cols-1 gap-16 md:grid-cols-2 md:items-start">
-
+            <div
+              className="reveal"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "clamp(40px,6vw,96px)",
+                alignItems: "start",
+              }}
+            >
               <div>
-                <p className="eyebrow mb-4">What to expect</p>
-                <h2 className="display-md mb-6">
-                  Hand-picked stays,<br />every run scouted.
+                <p className="eyebrow" style={{ marginBottom: 16 }}>What to Expect</p>
+                <h2
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "clamp(32px,4vw,52px)",
+                    fontWeight: 300,
+                    lineHeight: 1.1,
+                    color: "var(--ink)",
+                    marginBottom: 24,
+                  }}
+                >
+                  Every stay personally vetted.<br />Every instructor hand-selected.
                 </h2>
                 <p
-                  className="text-[16px] leading-relaxed"
-                  style={{ color: "var(--muted)" }}
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: 13,
+                    fontWeight: 300,
+                    color: "var(--stone)",
+                    lineHeight: 1.85,
+                    marginBottom: 36,
+                  }}
                 >
-                  Every hotel we recommend in {region.name}, we have stayed in.
-                  Every instructor we book, we have skied with. No exceptions —
-                  which means you arrive knowing exactly what you&apos;re getting.
+                  We don't send you a list of options. We build your trip from
+                  scratch — matching accommodations, instruction, and logistics
+                  to your group's specific needs.
                 </p>
-                <a
-                  href="#contact"
-                  className="pill pill-dark mt-8 inline-flex"
-                >
-                  Plan a trip to {region.name} →
-                </a>
+                <a href="#contact" className="btn-bronze">Plan a Trip to {region.name}</a>
               </div>
 
-              <div>
-                <p className="eyebrow mb-5">Resorts we cover</p>
-                <div className="flex flex-wrap gap-2">
-                  {region.resorts.map((resort) => (
+              {/* Services list */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                {SERVICES.map((s, i) => (
+                  <div
+                    key={s.title}
+                    style={{
+                      padding: "22px 0",
+                      borderBottom: "1px solid var(--line)",
+                      display: "flex",
+                      gap: 20,
+                      alignItems: "flex-start",
+                    }}
+                  >
                     <span
-                      key={resort}
-                      className="text-[13px] font-medium"
                       style={{
-                        background: "var(--pill)",
-                        color: "var(--ink)",
-                        padding: "9px 18px",
-                        borderRadius: 50,
-                        letterSpacing: "-0.01em",
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: 13,
+                        color: "#B8965A",
+                        minWidth: 20,
+                        paddingTop: 3,
                       }}
                     >
-                      {resort}
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                  ))}
-                </div>
+                    <div>
+                      <p
+                        style={{
+                          fontFamily: "'Montserrat', sans-serif",
+                          fontSize: 11,
+                          fontWeight: 500,
+                          letterSpacing: "0.06em",
+                          color: "var(--ink)",
+                          marginBottom: 4,
+                        }}
+                      >
+                        {s.title}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "'Montserrat', sans-serif",
+                          fontSize: 12,
+                          fontWeight: 300,
+                          color: "var(--stone)",
+                          lineHeight: 1.7,
+                        }}
+                      >
+                        {s.blurb}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* ── Services ── */}
-        <section
-          className="section"
-          style={{ background: "var(--paper)", borderTop: "1px solid var(--line)" }}
-        >
-          <div className="container-x">
-            <div className="reveal mb-12">
-              <p className="eyebrow mb-3">What&apos;s included</p>
-              <h2 className="display-md max-w-[18ch]">
-                Everything handled end to end
-              </h2>
-            </div>
-            <div className="reveal grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {SERVICES.map((s) => (
-                <div
-                  key={s.title}
-                  className="card-soft p-7 flex flex-col gap-3"
-                >
-                  <h3
-                    className="text-[17px] font-medium tracking-tight"
-                    style={{ color: "var(--ink)" }}
-                  >
-                    {s.title}
-                  </h3>
-                  <p
-                    className="text-[14px] leading-relaxed"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    {s.blurb}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
 
         {/* ── Other destinations ── */}
         <section
-          className="section"
-          style={{ background: "var(--background)", borderTop: "1px solid var(--line)" }}
+          style={{
+            background: "#f0ede8",
+            padding: "clamp(64px,9vw,120px) clamp(24px,5vw,72px)",
+          }}
         >
           <div className="container-x">
-            <div className="reveal mb-10">
-              <p className="eyebrow mb-3">Also explore</p>
-              <h2 className="display-md">More destinations</h2>
+            <div className="reveal" style={{ marginBottom: 48 }}>
+              <p className="eyebrow" style={{ marginBottom: 12 }}>Also Explore</p>
+              <h2
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(30px,4vw,48px)",
+                  fontWeight: 300,
+                  color: "var(--ink)",
+                }}
+              >
+                More destinations
+              </h2>
             </div>
-            <div className="reveal grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div
+              className="reveal"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+                gap: 16,
+              }}
+            >
               {otherRegions.map((r) => (
                 <Link
                   key={r.slug}
                   href={`/destinations/${r.slug}`}
-                  className="relative overflow-hidden block group"
-                  style={{ borderRadius: 20, aspectRatio: "16/9" }}
+                  style={{
+                    position: "relative",
+                    display: "block",
+                    overflow: "hidden",
+                    borderRadius: 16,
+                    aspectRatio: "3/2",
+                  }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.image}
                     alt={r.name}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700"
-                    style={{ transform: "scale(1)" }}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      filter: "saturate(0.85) brightness(0.6)",
+                      transition: "transform 0.7s ease, filter 0.5s ease",
+                    }}
+                    className="dest-card-img"
                   />
                   <div
-                    className="absolute inset-0 transition-opacity duration-300"
                     style={{
-                      background:
-                        "linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.72) 100%)",
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(180deg, transparent 30%, rgba(10,12,15,0.80) 100%)",
                     }}
                   />
-                  <div className="absolute bottom-0 left-0 p-6">
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      padding: "clamp(16px,2.5vw,28px)",
+                    }}
+                  >
                     <p
-                      className="text-[11px] font-medium tracking-[0.12em] uppercase mb-1"
-                      style={{ color: "rgba(255,255,255,0.55)" }}
+                      style={{
+                        fontFamily: "'Montserrat', sans-serif",
+                        fontSize: 9,
+                        letterSpacing: "0.2em",
+                        textTransform: "uppercase",
+                        color: "#B8965A",
+                        marginBottom: 6,
+                        fontWeight: 500,
+                      }}
                     >
                       {r.region}
                     </p>
                     <p
-                      className="text-[24px] font-medium tracking-tight"
-                      style={{ color: "rgba(255,255,255,0.96)" }}
+                      style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: "clamp(24px,3vw,34px)",
+                        fontWeight: 300,
+                        color: "rgba(242,239,232,0.96)",
+                        lineHeight: 1,
+                      }}
                     >
                       {r.name}
                     </p>
                   </div>
-                  <div className="absolute top-4 right-4">
-                    <span
-                      style={{
-                        background: "rgba(255,255,255,0.12)",
-                        backdropFilter: "blur(12px)",
-                        border: "1px solid rgba(255,255,255,0.18)",
-                        borderRadius: 50,
-                        padding: "7px 14px",
-                        fontSize: 12,
-                        fontWeight: 500,
-                        color: "rgba(255,255,255,0.80)",
-                      }}
-                    >
-                      Explore →
-                    </span>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 16,
+                      right: 16,
+                      background: "rgba(255,255,255,0.12)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255,255,255,0.18)",
+                      borderRadius: 100,
+                      padding: "7px 14px",
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: 10,
+                      fontWeight: 500,
+                      color: "rgba(255,255,255,0.85)",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    Explore →
                   </div>
                 </Link>
               ))}
@@ -269,7 +426,55 @@ export default async function DestinationPage({
           </div>
         </section>
 
-        <CTASection />
+        {/* ── CTA ── */}
+        <section
+          style={{
+            background: "#0A0C0F",
+            padding: "clamp(72px,10vw,130px) clamp(24px,5vw,72px)",
+          }}
+          id="contact"
+        >
+          <div className="container-x reveal">
+            <p className="eyebrow" style={{ color: "#B8965A", marginBottom: 16 }}>
+              Plan Your Trip to {region.name}
+            </p>
+            <h2
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(36px,5vw,64px)",
+                fontWeight: 300,
+                color: "rgba(242,239,232,0.95)",
+                maxWidth: "20ch",
+                lineHeight: 1.06,
+                marginBottom: 20,
+              }}
+            >
+              Tell us where you want to ski.
+            </h2>
+            <p
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 13,
+                fontWeight: 300,
+                color: "rgba(242,239,232,0.45)",
+                maxWidth: 380,
+                lineHeight: 1.85,
+                marginBottom: 36,
+              }}
+            >
+              Share your dates and group size. We'll send a tailored proposal within 48 hours.
+            </p>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <a href={SITE.whatsappUrl} target="_blank" rel="noopener" className="btn-bronze">
+                WhatsApp
+              </a>
+              <a href={`mailto:${SITE.email}`} className="btn-outline-light">
+                {SITE.email}
+              </a>
+            </div>
+          </div>
+        </section>
+
       </main>
       <SiteFooter />
     </>
