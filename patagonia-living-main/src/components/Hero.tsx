@@ -26,7 +26,7 @@ export default function Hero() {
           filter: "saturate(0.9) brightness(0.50)",
         }}
       >
-        <source src="/video/hero.mov" type="video/mp4" />
+        <source src="/video/hero.mp4" type="video/mp4" />
       </video>
 
       {/* Gradient */}
