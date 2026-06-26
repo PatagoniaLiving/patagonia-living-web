@@ -29,47 +29,29 @@ export type Region = {
 export const REGIONS: Region[] = [
   {
     slug: "patagonia",
-    region: "Argentina · Andes",
+    region: "Argentina",
     name: "Patagonia",
     blurb:
-      "Luxury ski trips to Bariloche and Cerro Catedral. Heli-skiing, lake-view lodges, and private instruction in the Argentine Andes.",
-    resorts: ["Bariloche", "Cerro Catedral", "Llao Llao", "Chapelco"],
+      "Ski trips to Bariloche and Cerro Catedral. Private instruction, stays at Llao Llao and Arelauquen Golf & Country Club, and heli-skiing in the Argentine Andes.",
+    resorts: ["Cerro Catedral", "Llao Llao", "Arelauquen", "Chapelco"],
     image: "/images/pat-heli.jpg",
   },
   {
     slug: "usa",
-    region: "United States · Rockies",
+    region: "United States",
     name: "United States",
     blurb:
-      "Ski vacations to Aspen, Vail, Deer Valley, and more. Ski-in ski-out hotels, private lessons, and full concierge across the best resorts in the USA.",
-    resorts: [
-      "Aspen",
-      "Vail",
-      "Deer Valley",
-      "Beaver Creek",
-      "Breckenridge",
-      "Park City",
-      "Stowe",
-      "Lake Tahoe",
-    ],
+      "Private ski lessons and curated stays at Vail, Beaver Creek, Aspen, and Breckenridge. The four iconic Rocky Mountain resorts, handled without compromise.",
+    resorts: ["Vail", "Beaver Creek", "Aspen", "Breckenridge"],
     image: "/images/pat-vista.jpg",
   },
   {
     slug: "europe",
-    region: "Europe · Alps",
+    region: "Europe",
     name: "Europe",
     blurb:
-      "Ski trips to the Alps — Zermatt, Courchevel, St. Moritz, and Cortina. Curated luxury hotels and private ski guides in the most iconic resorts in Europe.",
-    resorts: [
-      "Cortina",
-      "Val Gardena",
-      "St. Moritz",
-      "Gstaad",
-      "Zermatt",
-      "Courchevel",
-      "Megève",
-      "Madonna di Campiglio",
-    ],
+      "Ski trips to Zermatt, Courchevel, St. Moritz, and Cortina. Luxury chalets, private guides, and full concierge across the most iconic resorts in the Alps.",
+    resorts: ["Zermatt", "Courchevel", "St. Moritz", "Cortina", "Gstaad", "Megève"],
     image: "/images/pat-exterior.jpg",
   },
 ];
@@ -81,29 +63,29 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    title: "Private Ski Lessons",
+    title: "Private Ski Instruction",
     blurb:
-      "Book private ski instructors in Patagonia, the USA, and Europe. All levels and ages — from first-timers to advanced skiers.",
+      "Hand-selected instructors at Vail, Aspen, Beaver Creek, Breckenridge, and Bariloche. Every level, every age — matched to your group personally.",
   },
   {
-    title: "Luxury Accommodations",
+    title: "Curated Accommodations",
     blurb:
-      "Ski-in ski-out hotels and chalets, hand-selected and personally vetted at every resort. No surprises.",
+      "Llao Llao, Arelauquen, ski-in ski-out chalets in the Rockies and the Alps. Every property personally vetted — no surprises.",
   },
   {
-    title: "Flights & Transfers",
+    title: "Flights & Private Transfers",
     blurb:
-      "Commercial flights, private charters, and ground transfers coordinated door-to-slope. We handle every leg.",
+      "Commercial and private charter coordination, plus door-to-slope ground transfers. Every leg of the journey handled.",
   },
   {
-    title: "Heli-Skiing & Experiences",
+    title: "Exclusive Experiences",
     blurb:
-      "Heli-skiing in Patagonia, snowmobile dinners in the Alps, guided off-piste in Aspen. Exclusive experiences, fully organized.",
+      "Heli-skiing in Patagonia, off-piste in Aspen, private mountain dinners in the Alps. Rare access, fully arranged.",
   },
   {
-    title: "Full Ski Concierge",
+    title: "Full Trip Concierge",
     blurb:
-      "Lift passes, equipment rental, restaurant reservations, and on-the-ground coordination throughout your entire trip.",
+      "Lift passes, equipment, reservations, and on-the-ground coordination from arrival to departure. Nothing left to chance.",
   },
 ];
 

@@ -1,60 +1,87 @@
 "use client";
 import Link from "next/link";
-import { SITE } from "@/lib/content";
 
 export default function SiteNav() {
   return (
     <header
       className="hero-in sticky top-0 z-50 w-full"
       style={{
-        background: "rgba(247,245,242,0.92)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        borderBottom: "1px solid rgba(15,14,12,0.08)",
+        background: "rgba(247,245,242,0.96)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(15,14,12,0.07)",
       }}
     >
       <nav
-        className="grid items-center px-[clamp(20px,4vw,36px)] py-5"
-        style={{ gridTemplateColumns: "1fr auto 1fr" }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 clamp(20px,4vw,48px)",
+          height: 64,
+        }}
       >
-        {/* Left */}
-        <div className="hidden md:flex items-center gap-7 justify-end pr-10">
-          <a href="#destinations" className="nav-link nav-link-dark">Destinations</a>
-          <a href="#services" className="nav-link nav-link-dark">Services</a>
-        </div>
-
-        {/* Center logo */}
-        <Link href="/" className="justify-self-center text-center">
+        {/* Logo — left aligned */}
+        <Link href="/" style={{ display: "flex", flexDirection: "column", gap: 3 }}>
           <span
-            className="block tracking-[0.22em] uppercase"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 19,
+              fontSize: 18,
               fontWeight: 400,
-              color: "var(--ink)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "#0f0e0c",
               lineHeight: 1,
             }}
           >
             Patagonia{" "}
-            <span style={{ color: "var(--bronze)" }}>Living</span>
+            <span style={{ color: "#B8965A" }}>Living</span>
           </span>
           <span
-            className="block mt-1 italic tracking-[0.28em] uppercase"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontSize: 8,
-              color: "var(--stone)",
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              fontStyle: "italic",
+              color: "#8a8480",
+              lineHeight: 1,
             }}
           >
             Luxury Ski Travel
           </span>
         </Link>
 
-        {/* Right */}
-        <div className="hidden md:flex items-center gap-7 pl-10">
-          <a href="#guides" className="nav-link nav-link-dark">Guides</a>
-          <a href="#contact" className="btn-bronze" style={{ padding: "9px 20px", fontSize: 10 }}>
-            Contact Us
+        {/* Right nav links */}
+        <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <a href="#destinations" className="nav-link nav-link-dark">Destinations</a>
+          <a href="#services" className="nav-link nav-link-dark">Services</a>
+          <a href="#guides" className="nav-link nav-link-dark">About</a>
+          <a
+            href="#contact"
+            style={{
+              background: "#B8965A",
+              color: "#fff",
+              padding: "10px 22px",
+              borderRadius: 100,
+              fontSize: 10,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 500,
+              transition: "background 0.2s, transform 0.2s",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.background = "#ccaa6d";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.background = "#B8965A";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            }}
+          >
+            Plan My Trip
           </a>
         </div>
       </nav>

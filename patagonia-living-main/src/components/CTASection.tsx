@@ -2,44 +2,117 @@ import { SITE } from "@/lib/content";
 
 export default function CTASection() {
   return (
-    <section id="contact" className="section" style={{ background: "var(--paper)" }}>
+    <section
+      id="contact"
+      style={{
+        background: "#0A0C0F",
+        padding: "clamp(72px,10vw,130px) clamp(20px,5vw,72px)",
+      }}
+    >
       <div className="container-x">
         <div
-          className="reveal relative overflow-hidden rounded-[28px] px-[clamp(28px,5vw,72px)] py-[clamp(48px,7vw,96px)]"
-          style={{ background: "var(--ink)" }}
+          className="reveal"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr auto",
+            alignItems: "end",
+            gap: "clamp(32px,5vw,80px)",
+          }}
         >
           <div>
-            <p className="eyebrow mb-4" style={{ color: "rgba(250,250,250,0.6)" }}>
-              Plan your season
+            <p
+              className="eyebrow"
+              style={{ color: "#B8965A", marginBottom: 16 }}
+            >
+              Plan Your Season
             </p>
-            <h2 className="display-lg max-w-[14ch]" style={{ color: "rgba(250,250,250,0.96)" }}>
-              Let&apos;s get you on the mountain.
+            <h2
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(38px,5.5vw,72px)",
+                fontWeight: 300,
+                lineHeight: 1.04,
+                color: "rgba(242,239,232,0.95)",
+                maxWidth: "18ch",
+              }}
+            >
+              Tell us where you want to ski.
             </h2>
+            <p
+              style={{
+                marginTop: 20,
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 13,
+                fontWeight: 300,
+                color: "rgba(242,239,232,0.48)",
+                maxWidth: 400,
+                lineHeight: 1.85,
+                letterSpacing: "0.02em",
+              }}
+            >
+              Share your destination, dates, and group size.
+              We'll send a tailored proposal within 48 hours — no commitments.
+            </p>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 36 }}>
+              <a
+                href={SITE.whatsappUrl}
+                target="_blank"
+                rel="noopener"
+                className="btn-bronze"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="btn-outline-light"
+              >
+                {SITE.email}
+              </a>
+            </div>
           </div>
-          <p
-            className="mt-6 max-w-[44ch] text-[15px] font-medium leading-relaxed"
-            style={{ color: "rgba(250,250,250,0.72)" }}
+
+          {/* Side detail */}
+          <div
+            style={{
+              borderLeft: "1px solid rgba(242,239,232,0.08)",
+              paddingLeft: "clamp(24px,4vw,56px)",
+              display: "flex",
+              flexDirection: "column",
+              gap: 28,
+            }}
           >
-            Tell us your destination, dates, and group. We handle everything from
-            there, with a tailored proposal in under 48 hours.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-2.5">
-            <a
-              href={SITE.whatsappUrl}
-              target="_blank"
-              rel="noopener"
-              className="pill"
-              style={{ background: "#fafafa", color: "var(--ink)" }}
-            >
-              Message on WhatsApp
-            </a>
-            <a
-              href={`mailto:${SITE.email}`}
-              className="pill"
-              style={{ background: "rgba(255,255,255,0.12)", color: "#fff" }}
-            >
-              {SITE.email}
-            </a>
+            {[
+              { n: "01", label: "Share destination & dates" },
+              { n: "02", label: "Receive a tailored proposal" },
+              { n: "03", label: "We handle everything" },
+            ].map((step) => (
+              <div key={step.n} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                <span
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: 13,
+                    color: "#B8965A",
+                    lineHeight: 1,
+                    paddingTop: 2,
+                    minWidth: 20,
+                  }}
+                >
+                  {step.n}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: 11,
+                    letterSpacing: "0.06em",
+                    color: "rgba(242,239,232,0.55)",
+                    lineHeight: 1.6,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {step.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
