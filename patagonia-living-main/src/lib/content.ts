@@ -29,19 +29,19 @@ export type Region = {
 export const REGIONS: Region[] = [
   {
     slug: "patagonia",
-    region: "Argentina",
+    region: "Argentina · Andes",
     name: "Patagonia",
     blurb:
-      "The Andes at their most dramatic. Heli days, lake-view lodges and powder above Bariloche.",
-    resorts: ["Bariloche", "Cerro Catedral", "Llao Llao"],
+      "Luxury ski trips to Bariloche and Cerro Catedral. Heli-skiing, lake-view lodges, and private instruction in the Argentine Andes.",
+    resorts: ["Bariloche", "Cerro Catedral", "Llao Llao", "Chapelco"],
     image: "/images/pat-heli.jpg",
   },
   {
     slug: "usa",
-    region: "United States",
-    name: "USA",
+    region: "United States · Rockies",
+    name: "United States",
     blurb:
-      "The Rockies and beyond. Ski-in ski-out luxury from Aspen to Lake Tahoe.",
+      "Ski vacations to Aspen, Vail, Deer Valley, and more. Ski-in ski-out hotels, private lessons, and full concierge across the best resorts in the USA.",
     resorts: [
       "Aspen",
       "Vail",
@@ -56,10 +56,10 @@ export const REGIONS: Region[] = [
   },
   {
     slug: "europe",
-    region: "Europe",
+    region: "Europe · Alps",
     name: "Europe",
     blurb:
-      "The Alps' most legendary names. Cortina, St. Moritz, Zermatt and Courchevel.",
+      "Ski trips to the Alps — Zermatt, Courchevel, St. Moritz, and Cortina. Curated luxury hotels and private ski guides in the most iconic resorts in Europe.",
     resorts: [
       "Cortina",
       "Val Gardena",
@@ -81,29 +81,29 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    title: "Ski Lessons",
+    title: "Private Ski Lessons",
     blurb:
-      "Private instruction with vetted independent instructors across all three regions. All levels, all ages.",
+      "Book private ski instructors in Patagonia, the USA, and Europe. All levels and ages — from first-timers to advanced skiers.",
   },
   {
-    title: "Accommodations",
+    title: "Luxury Accommodations",
     blurb:
-      "Hotels and short-term rentals handpicked and vetted in person at every destination.",
+      "Ski-in ski-out hotels and chalets, hand-selected and personally vetted at every resort. No surprises.",
   },
   {
-    title: "Transfers",
+    title: "Flights & Transfers",
     blurb:
-      "Commercial and private flights, plus ground transfers, coordinated door to slope.",
+      "Commercial flights, private charters, and ground transfers coordinated door-to-slope. We handle every leg.",
   },
   {
-    title: "Experiences",
+    title: "Heli-Skiing & Experiences",
     blurb:
-      "Heli-skiing, snowmobile dinners, guided backcountry and off-piste adventures.",
+      "Heli-skiing in Patagonia, snowmobile dinners in the Alps, guided off-piste in Aspen. Exclusive experiences, fully organized.",
   },
   {
-    title: "Concierge",
+    title: "Full Ski Concierge",
     blurb:
-      "Lift passes, equipment rental, restaurant reservations and daily coordination.",
+      "Lift passes, equipment rental, restaurant reservations, and on-the-ground coordination throughout your entire trip.",
   },
 ];
 
