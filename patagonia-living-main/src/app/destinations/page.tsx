@@ -3,6 +3,7 @@ import { REGIONS, RESORTS, HOTELS } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export const metadata = {
   title: "Destinations — Patagonia Living",
@@ -63,6 +64,7 @@ export default function DestinationsPage() {
                 {/* Region hero strip */}
                 <Link href={`/destinations/${region.slug}`} style={{ display: "block", textDecoration: "none" }}>
                   <div
+                    className="img-rise"
                     style={{
                       position: "relative",
                       height: "clamp(280px,40vw,520px)",
@@ -145,6 +147,7 @@ export default function DestinationsPage() {
                         style={{ display: "block", textDecoration: "none" }}
                       >
                         <div
+                          className="img-rise"
                           style={{
                             position: "relative",
                             aspectRatio: "3/2",
@@ -212,6 +215,7 @@ export default function DestinationsPage() {
         </div>
       </main>
       <SiteFooter />
+      <FloatingCTA />
     </>
   );
 }

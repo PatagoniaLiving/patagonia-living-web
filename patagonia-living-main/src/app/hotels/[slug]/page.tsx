@@ -121,12 +121,12 @@ export default async function HotelPage({ params }: { params: Promise<{ slug: st
 
       {/* ── CONTENT ── */}
       <div
+        className="r-hotel-body"
         style={{
           maxWidth: 1160,
           margin: "0 auto",
           padding: "clamp(56px,8vw,100px) clamp(20px,5vw,72px)",
           display: "grid",
-          gridTemplateColumns: "1fr 360px",
           gap: "clamp(48px,6vw,80px)",
           alignItems: "start",
         }}

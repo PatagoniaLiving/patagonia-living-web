@@ -35,16 +35,16 @@ export default function Guides() {
         </div>
 
         <div
+          className="r-three"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 16,
           }}
         >
           {GUIDES.map((g, i) => (
             <div
               key={g.name}
-              className={`reveal reveal-d${i + 1}`}
+              className={`reveal reveal-d${i + 1} img-rise`}
               style={{
                 position: "relative",
                 aspectRatio: "4/5",

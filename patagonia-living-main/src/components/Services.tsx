@@ -105,20 +105,21 @@ export default function Services() {
                 >
                   <div style={{ overflow: "hidden" }}>
                     <div
+                      className="r-svc-expand"
                       style={{
                         display: "grid",
-                        gridTemplateColumns: "44px 1fr 1fr",
                         gap: "clamp(20px,3vw,40px)",
                         padding: "0 clamp(16px,2vw,24px) clamp(28px,3vw,44px)",
                         alignItems: "start",
                       }}
                     >
                       {/* spacer */}
-                      <div />
+                      <div className="hide-mobile" />
 
                       {/* Left: image + description */}
                       <div>
                         <div
+                          className="img-rise"
                           style={{
                             position: "relative", aspectRatio: "4/3",
                             overflow: "hidden", borderRadius: 10, marginBottom: 24,

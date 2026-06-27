@@ -5,6 +5,7 @@ import { REGIONS, SERVICES, HOTELS, RESORTS, SITE } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export async function generateStaticParams() {
   return REGIONS.map((r) => ({ slug: r.slug }));
@@ -164,7 +165,8 @@ export default async function DestinationPage({
         {/* ── Resort bar ── */}
         <div
           style={{
-            background: "#2C3E4A",
+            background: "#15181e",
+            borderBottom: "1px solid rgba(242,239,232,0.06)",
             padding: "16px clamp(24px,4vw,56px)",
             display: "flex",
             alignItems: "center",
@@ -244,6 +246,7 @@ export default async function DestinationPage({
                       style={{ display: "block", textDecoration: "none" }}
                     >
                       <div
+                        className="img-rise"
                         style={{
                           position: "relative", aspectRatio: "4/3",
                           overflow: "hidden", borderRadius: 14, marginBottom: 18,
@@ -321,10 +324,9 @@ export default async function DestinationPage({
         >
           <div className="container-x">
             <div
-              className="reveal"
+              className="reveal r-two"
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
                 gap: "clamp(40px,6vw,96px)",
                 alignItems: "start",
               }}
@@ -449,6 +451,7 @@ export default async function DestinationPage({
                 <Link
                   key={r.slug}
                   href={`/destinations/${r.slug}`}
+                  className="img-rise"
                   style={{
                     position: "relative",
                     display: "block",
@@ -589,6 +592,7 @@ export default async function DestinationPage({
 
       </main>
       <SiteFooter />
+      <FloatingCTA />
     </>
   );
 }

@@ -1,6 +1,6 @@
 export default function Motion() {
   return (
-    <section style={{ background: "var(--background)", padding: "0 clamp(20px,5vw,72px) clamp(64px,9vw,120px)" }}>
+    <section style={{ background: "var(--background)", padding: "clamp(56px,7vw,96px) clamp(20px,5vw,72px) clamp(64px,9vw,120px)" }}>
       <div className="container-x">
         <div
           className="reveal"

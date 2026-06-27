@@ -12,10 +12,9 @@ export default function CTASection() {
     >
       <div className="container-x">
         <div
-          className="reveal"
+          className="reveal r-split"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr auto",
             alignItems: "end",
             gap: "clamp(32px,5vw,80px)",
           }}
@@ -74,6 +73,7 @@ export default function CTASection() {
 
           {/* Side detail */}
           <div
+            className="cta-aside"
             style={{
               borderLeft: "1px solid rgba(242,239,232,0.08)",
               paddingLeft: "clamp(24px,4vw,56px)",

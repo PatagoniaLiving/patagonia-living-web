@@ -29,10 +29,11 @@ export default function Stories() {
         {STORIES[0] && (
           <a
             href="#stories"
-            className="reveal"
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(24px,4vw,56px)", alignItems: "center", textDecoration: "none", marginBottom: 64 }}
+            className="reveal r-two"
+            style={{ display: "grid", gap: "clamp(24px,4vw,56px)", alignItems: "center", textDecoration: "none", marginBottom: 64 }}
           >
             <div
+              className="img-rise"
               style={{
                 position: "relative", aspectRatio: "4/3",
                 overflow: "hidden", borderRadius: 14,
@@ -120,6 +121,7 @@ export default function Stories() {
               style={{ display: "block", textDecoration: "none" }}
             >
               <div
+                className="img-rise"
                 style={{
                   position: "relative", aspectRatio: "4/3",
                   overflow: "hidden", borderRadius: 14, marginBottom: 18,

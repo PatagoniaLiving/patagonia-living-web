@@ -10,16 +10,16 @@ export default function SiteFooter() {
       >
         {/* Top: brand + columns */}
         <div
+          className="r-footer-cols"
           style={{
             display: "grid",
-            gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
             gap: "clamp(32px,5vw,72px)",
             paddingBottom: 48,
             borderBottom: "1px solid rgba(242,239,232,0.07)",
           }}
         >
           {/* Brand */}
-          <div>
+          <div className="r-footer-brand">
             <p
               style={{
                 fontFamily: "'Cormorant Garamond', serif",

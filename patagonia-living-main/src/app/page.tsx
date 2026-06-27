@@ -9,6 +9,7 @@ import Guides from "@/components/Guides";
 import Stories from "@/components/Stories";
 import CTASection from "@/components/CTASection";
 import SiteFooter from "@/components/SiteFooter";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <CTASection />
       </main>
       <SiteFooter />
+      <FloatingCTA />
     </>
   );
 }

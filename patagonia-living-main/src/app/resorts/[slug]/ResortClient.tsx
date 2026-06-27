@@ -53,8 +53,9 @@ export default function ResortClient({ resort, region, hotels, siblingResorts }:
           position: "absolute",
           top: "calc(72px + clamp(16px,2vw,28px))",
           left: "clamp(24px,4vw,56px)",
+          right: "clamp(24px,4vw,56px)",
           zIndex: 10,
-          display: "flex", alignItems: "center", gap: 10,
+          display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap",
         }}>
           <Link
             href="/destinations"
@@ -204,6 +205,7 @@ export default function ResortClient({ resort, region, hotels, siblingResorts }:
                   }}
                 >
                   <div
+                    className="img-rise"
                     style={{
                       position: "relative", aspectRatio: "4/3",
                       overflow: "hidden", borderRadius: 14, marginBottom: 16,
@@ -404,7 +406,7 @@ export default function ResortClient({ resort, region, hotels, siblingResorts }:
           }}>
             {siblingResorts.map((r) => (
               <Link key={r.slug} href={`/resorts/${r.slug}`} style={{ display: "block", textDecoration: "none" }}>
-                <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", borderRadius: 10 }}>
+                <div className="img-rise" style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", borderRadius: 10 }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={r.image} alt={r.name}
                     style={{

@@ -37,6 +37,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  /* Keep anchored sections clear of the fixed 72px nav */
+  scroll-padding-top: 92px;
 }
 
 body {
@@ -69,12 +71,22 @@ img { display: block; max-width: 100%; }
 
 /* Scroll reveal — fade up */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-.reveal { opacity: 0; }
-.reveal.in { animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards; }
+.reveal { opacity: 0; will-change: opacity, transform; }
+.reveal.in { animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) forwards; }
 .reveal-d1.in { animation-delay: .08s; }
 .reveal-d2.in { animation-delay: .18s; }
 .reveal-d3.in { animation-delay: .28s; }
 .reveal-d4.in { animation-delay: .38s; }
+.reveal-d5.in { animation-delay: .48s; }
+.reveal-d6.in { animation-delay: .58s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.in { opacity: 1 !important; animation: none !important; transform: none !important; }
+}
+
+/* Image reveal — gentle settle-in zoom for cover images inside cards.
+   The parent gets .img-rise; the <img> settles from a slight scale. */
+.img-rise > img { transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.img-rise:hover > img { transform: scale(1.05); }
 
 /* Hero entrance */
 @keyframes heroIn { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
@@ -215,3 +227,121 @@ img { display: block; max-width: 100%; }
 .container-x { max-width: 1240px; margin: 0 auto; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ============================================================
+   RESPONSIVE GRID UTILITIES
+   Pair with an inline `display:grid` + `gap`. These classes set
+   ONLY grid-template-columns, so they never fight inline styles.
+   ============================================================ */
+.r-split       { grid-template-columns: 1fr auto; }
+.r-two         { grid-template-columns: 1fr 1fr; }
+.r-three       { grid-template-columns: repeat(3, 1fr); }
+.r-footer-cols { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+.r-svc-expand  { grid-template-columns: 44px 1fr 1fr; }
+.r-hotel-body  { grid-template-columns: 1fr 360px; }
+
+@media (max-width: 860px) { .r-hotel-body { grid-template-columns: 1fr; } }
+
+@media (max-width: 960px) {
+  .r-footer-cols { grid-template-columns: 1fr 1fr 1fr; }
+  .r-svc-expand  { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .r-split       { grid-template-columns: 1fr; }
+  .r-two         { grid-template-columns: 1fr; }
+  .r-three       { grid-template-columns: repeat(2, 1fr); }
+  .r-footer-cols { grid-template-columns: 1fr 1fr; }
+  .r-footer-brand { grid-column: 1 / -1; margin-bottom: 8px; }
+  .hide-mobile   { display: none !important; }
+}
+
+/* ============================================================
+   MOBILE NAV (hamburger + slide-down sheet)
+   ============================================================ */
+.nav-desktop { display: flex; align-items: center; gap: 32px; }
+.nav-burger  { display: none; }
+
+.nav-sheet {
+  position: fixed; inset: 72px 0 auto 0;
+  background: rgba(8,9,12,0.97);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(242,239,232,0.08);
+  z-index: 99;
+  display: flex; flex-direction: column;
+  padding: 22px clamp(20px,5vw,56px) 32px;
+  gap: 4px;
+  transform: translateY(-12px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.nav-sheet.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.nav-sheet a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 300; color: rgba(242,239,232,0.92);
+  padding: 14px 0; border-bottom: 1px solid rgba(242,239,232,0.07);
+}
+.nav-sheet a:last-of-type { border-bottom: none; }
+
+@media (max-width: 760px) {
+  .nav-desktop { display: none; }
+  .nav-burger  {
+    display: inline-flex; flex-direction: column; justify-content: center;
+    gap: 5px; width: 44px; height: 44px; align-items: flex-end;
+    background: none; border: none; cursor: pointer; padding: 0;
+  }
+  .nav-burger span {
+    display: block; height: 1.5px; width: 24px; border-radius: 2px;
+    transition: transform .3s ease, opacity .3s ease, background .3s ease;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+}
+
+/* ============================================================
+   FLOATING MOBILE CTA — sticky WhatsApp/plan button
+   ============================================================ */
+.float-cta {
+  position: fixed; left: 16px; right: 16px; bottom: 16px;
+  z-index: 90;
+  display: none;
+  align-items: center; justify-content: center; gap: 10px;
+  background: #B8965A; color: #fff;
+  padding: 16px 24px; border-radius: 100px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(10,12,15,0.35), 0 2px 8px rgba(10,12,15,0.25);
+  transform: translateY(140%);
+  transition: transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.float-cta.show { transform: translateY(0); }
+@media (max-width: 760px) {
+  .float-cta { display: flex; }
+  /* keep the page footer clear of the floating bar */
+  body { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* ============================================================
+   MOBILE TYPE / SPACING / TAP TARGETS
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Give body copy a touch more air and prevent over-wide measures */
+  p { line-height: 1.8; }
+  /* Comfortable tap targets for any pill/link button */
+  a[class*="btn"], .pill-glass { min-height: 44px; }
+}
+@media (max-width: 460px) {
+  .r-three { grid-template-columns: 1fr 1fr; } /* guides stay 2-up, not 1 giant */
+}
+
+/* When the CTA two-up stacks, turn the left rule into a top rule */
+@media (max-width: 760px) {
+  .cta-aside {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid rgba(242,239,232,0.08);
+    padding-top: 30px;
+  }
+  /* nowrap step labels can overflow narrow screens — let them wrap */
+  .cta-aside span { white-space: normal !important; }
+}

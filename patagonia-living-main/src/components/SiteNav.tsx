@@ -2,6 +2,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+const LINKS = [
+  { label: "Destinations", href: "/destinations" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#guides" },
+];
+
 export default function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +19,14 @@ export default function SiteNav() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Lock body scroll while the mobile sheet is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const linkColor = scrolled ? "rgba(15,14,12,0.65)" : "rgba(242,239,232,0.88)";
+  const burgerColor = scrolled ? "#0f0e0c" : "rgba(242,239,232,0.95)";
 
   return (
     <header
@@ -24,7 +37,6 @@ export default function SiteNav() {
         height: 72,
         display: "flex",
         alignItems: "center",
-        // Always have a backdrop — dark when over hero, cream when scrolled
         background: scrolled
           ? "rgba(247,245,242,0.97)"
           : "rgba(5,6,8,0.55)",
@@ -46,7 +58,11 @@ export default function SiteNav() {
         }}
       >
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", flexDirection: "column", gap: 3, textDecoration: "none" }}>
+        <Link
+          href="/"
+          onClick={() => setMenuOpen(false)}
+          style={{ display: "flex", flexDirection: "column", gap: 3, textDecoration: "none" }}
+        >
           <span
             style={{
               fontFamily: "'Cormorant Garamond', serif",
@@ -80,12 +96,8 @@ export default function SiteNav() {
         </Link>
 
         {/* Desktop Links */}
-        <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-          {[
-            { label: "Destinations", href: "/destinations" },
-            { label: "Services", href: "/#services" },
-            { label: "About", href: "/#guides" },
-          ].map((item) => (
+        <div className="nav-desktop">
+          {LINKS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -123,7 +135,49 @@ export default function SiteNav() {
             Plan My Trip
           </a>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className={`nav-burger${menuOpen ? " open" : ""}`}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <span style={{ background: burgerColor }} />
+          <span style={{ background: burgerColor }} />
+          <span style={{ background: burgerColor }} />
+        </button>
       </nav>
+
+      {/* Mobile slide-down sheet */}
+      <div className={`nav-sheet${menuOpen ? " open" : ""}`}>
+        {LINKS.map((item) => (
+          <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
+            {item.label}
+          </Link>
+        ))}
+        <a
+          href="/#contact"
+          onClick={() => setMenuOpen(false)}
+          style={{
+            marginTop: 18,
+            background: "#B8965A",
+            color: "#fff",
+            padding: "16px 24px",
+            borderRadius: 100,
+            fontSize: 11,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 600,
+            textAlign: "center",
+            // override the serif sheet-link styling
+            borderBottom: "none",
+          }}
+        >
+          Plan My Trip
+        </a>
+      </div>
     </header>
   );
 }
