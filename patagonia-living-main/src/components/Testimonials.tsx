@@ -2,26 +2,79 @@ import { TESTIMONIALS } from "@/lib/content";
 
 export default function Testimonials() {
   return (
-    <section className="section" style={{ background: "var(--background)" }}>
+    <section
+      style={{
+        background: "#0A0C0F",
+        padding: "clamp(72px,10vw,130px) clamp(20px,5vw,72px)",
+      }}
+    >
       <div className="container-x">
-        <div className="reveal mb-12">
-          <p className="eyebrow mb-3">Travelers</p>
-          <h2 className="display-lg">What our travelers say.</h2>
+        <div className="reveal" style={{ marginBottom: 64 }}>
+          <p className="eyebrow" style={{ color: "#B8965A", marginBottom: 14 }}>Travelers</p>
+          <h2
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "clamp(32px,4.5vw,56px)",
+              fontWeight: 300,
+              color: "rgba(242,239,232,0.90)",
+              lineHeight: 1.06,
+            }}
+          >
+            What our clients say.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: 1,
+            background: "rgba(242,239,232,0.07)",
+            border: "1px solid rgba(242,239,232,0.07)",
+          }}
+        >
           {TESTIMONIALS.map((t, i) => (
             <figure
               key={t.name}
-              className={`reveal reveal-d${i + 1} flex flex-col justify-between gap-8 rounded-[24px] p-8`}
-              style={{ background: "var(--paper)", border: "1px solid var(--line)" }}
+              className={`reveal reveal-d${i + 1}`}
+              style={{
+                background: "#0A0C0F",
+                padding: "clamp(32px,4vw,52px) clamp(24px,3vw,40px)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: 40,
+                margin: 0,
+              }}
             >
-              <blockquote className="text-[17px] font-medium leading-relaxed tracking-tight text-[color:var(--ink)]">
-                “{t.quote}”
+              <blockquote
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(18px,2vw,24px)",
+                  fontWeight: 300,
+                  fontStyle: "italic",
+                  lineHeight: 1.5,
+                  color: "rgba(242,239,232,0.82)",
+                  margin: 0,
+                }}
+              >
+                &ldquo;{t.quote}&rdquo;
               </blockquote>
               <figcaption>
-                <p className="text-[14px] font-medium tracking-tight">{t.name}</p>
-                <p className="mt-0.5 text-[13px] font-medium text-[color:var(--soft)]">
+                <p style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 12, fontWeight: 500,
+                  color: "rgba(242,239,232,0.75)",
+                  letterSpacing: "0.04em",
+                }}>
+                  {t.name}
+                </p>
+                <p style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 11, fontWeight: 300,
+                  color: "#B8965A",
+                  marginTop: 4, letterSpacing: "0.04em",
+                }}>
                   {t.detail}
                 </p>
               </figcaption>

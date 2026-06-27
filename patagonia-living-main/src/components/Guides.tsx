@@ -2,43 +2,98 @@ import { GUIDES } from "@/lib/content";
 
 export default function Guides() {
   return (
-    <section id="guides" className="section" style={{ background: "var(--paper)" }}>
+    <section
+      id="guides"
+      style={{
+        background: "var(--background)",
+        padding: "clamp(72px,10vw,130px) clamp(20px,5vw,72px)",
+      }}
+    >
       <div className="container-x">
-        <div className="reveal mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="eyebrow mb-3">The team</p>
-            <h2 className="display-lg max-w-[14ch]">Meet your guides.</h2>
-          </div>
-          <p className="max-w-[40ch] text-[15px] font-medium leading-relaxed text-[color:var(--muted)]">
-            Independent, vetted, and local to every range we work in. They have
-            skied these mountains their whole lives.
-          </p>
+        <div
+          className="reveal"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+            marginBottom: 56,
+          }}
+        >
+          <p className="eyebrow">The Team</p>
+          <h2
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "clamp(32px,4.5vw,56px)",
+              fontWeight: 300,
+              color: "var(--ink)",
+              lineHeight: 1.06,
+              maxWidth: "20ch",
+            }}
+          >
+            Guides who know every run they book.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-5 lg:grid-cols-3">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 16,
+          }}
+        >
           {GUIDES.map((g, i) => (
             <div
               key={g.name}
-              className={`reveal reveal-d${i + 1} group relative aspect-[4/5] overflow-hidden rounded-[24px]`}
+              className={`reveal reveal-d${i + 1}`}
+              style={{
+                position: "relative",
+                aspectRatio: "4/5",
+                overflow: "hidden",
+                borderRadius: 16,
+              }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={g.image}
                 alt={g.name}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                style={{
+                  position: "absolute", inset: 0,
+                  width: "100%", height: "100%",
+                  objectFit: "cover",
+                  filter: "saturate(0.85) brightness(0.72)",
+                  transition: "transform 1.2s ease",
+                }}
+                className="guide-img"
               />
               <div
-                className="absolute inset-0"
                 style={{
-                  background:
-                    "linear-gradient(180deg, rgba(10,12,15,0) 48%, rgba(10,12,15,0.82) 100%)",
+                  position: "absolute", inset: 0,
+                  background: "linear-gradient(180deg, transparent 45%, rgba(10,12,15,0.88) 100%)",
                 }}
               />
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="text-[18px] font-medium tracking-tight text-[rgba(250,250,250,0.96)]">
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0, left: 0, right: 0,
+                  padding: "clamp(16px,2.5vw,24px)",
+                }}
+              >
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(18px,2vw,22px)",
+                  fontWeight: 400,
+                  color: "rgba(242,239,232,0.95)",
+                  lineHeight: 1.1,
+                }}>
                   {g.name}
                 </p>
-                <p className="mt-0.5 text-[12.5px] font-medium text-[rgba(250,250,250,0.72)]">
+                <p style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 10, fontWeight: 400,
+                  letterSpacing: "0.08em",
+                  color: "#B8965A",
+                  marginTop: 6,
+                }}>
                   {g.role} · {g.region}
                 </p>
               </div>

@@ -152,7 +152,6 @@ img { display: block; max-width: 100%; }
 .dest-panels { display: flex; height: 88vh; min-height: 520px; }
 .dest-panel {
   flex: 1; position: relative; overflow: hidden; cursor: pointer;
-  border-right: 1px solid rgba(242,239,232,0.08);
   transition: flex 0.65s cubic-bezier(.2,.7,.2,1);
 }
 .dest-panel:last-child { border-right: none; }

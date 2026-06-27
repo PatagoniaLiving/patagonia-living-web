@@ -1,99 +1,206 @@
-import { NAV, REGIONS, SERVICES, SITE } from "@/lib/content";
+"use client";
+import { REGIONS, SERVICES, SITE } from "@/lib/content";
 
 export default function SiteFooter() {
   return (
-    <footer style={{ background: "var(--ink)" }}>
-      <div className="container-x px-[clamp(20px,5vw,72px)] py-[clamp(56px,7vw,96px)]">
-        <div className="flex flex-col gap-12 md:flex-row md:justify-between">
-          <div className="max-w-[34ch]">
-            <p className="text-[22px] font-medium tracking-tight text-[#fafafa]">
-              {SITE.name}
+    <footer style={{ background: "#0A0C0F", borderTop: "1px solid rgba(242,239,232,0.07)" }}>
+      <div
+        className="container-x"
+        style={{ padding: "clamp(64px,9vw,110px) clamp(20px,5vw,72px) clamp(36px,5vw,56px)" }}
+      >
+        {/* Top: brand + columns */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
+            gap: "clamp(32px,5vw,72px)",
+            paddingBottom: 48,
+            borderBottom: "1px solid rgba(242,239,232,0.07)",
+          }}
+        >
+          {/* Brand */}
+          <div>
+            <p
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 20, fontWeight: 400,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgba(242,239,232,0.95)",
+                lineHeight: 1,
+              }}
+            >
+              Patagonia <span style={{ color: "#B8965A" }}>Living</span>
             </p>
-            <p className="mt-3 text-[14px] font-medium leading-relaxed text-[rgba(250,250,250,0.6)]">
-              Luxury ski travel across the Andes, the Rockies, and the Alps.
-              Worldwide, 24/7.
+            <p
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 12, fontWeight: 300,
+                color: "rgba(242,239,232,0.40)",
+                lineHeight: 1.8, marginTop: 16,
+                maxWidth: 240,
+              }}
+            >
+              Boutique ski travel agency. Bariloche, the Rockies, and the Alps —
+              handled end to end.
             </p>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 }}>
+              <a
+                href={SITE.whatsappUrl}
+                target="_blank"
+                rel="noopener"
+                style={{
+                  background: "#B8965A", color: "#fff",
+                  padding: "10px 20px", borderRadius: 100,
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 10, fontWeight: 500,
+                  letterSpacing: "0.12em", textTransform: "uppercase",
+                }}
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${SITE.email}`}
+                style={{
+                  border: "1px solid rgba(242,239,232,0.18)", color: "rgba(242,239,232,0.65)",
+                  padding: "10px 20px", borderRadius: 100,
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 10, fontWeight: 400,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                {SITE.email}
+              </a>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
-            <div>
-              <p className="mb-4 text-[12px] font-medium tracking-tight text-[rgba(250,250,250,0.45)]">
-                Destinations
-              </p>
-              <ul className="flex flex-col gap-2.5">
-                {REGIONS.map((r) => (
-                  <li key={r.slug}>
-                    <a
-                      href="#destinations"
-                      className="text-[14px] font-medium text-[rgba(250,250,250,0.78)] transition-colors hover:text-[#fafafa]"
-                    >
-                      {r.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          {/* Destinations */}
+          <div>
+            <p style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 9, fontWeight: 500,
+              letterSpacing: "0.2em", textTransform: "uppercase",
+              color: "rgba(242,239,232,0.35)",
+              marginBottom: 20,
+            }}>
+              Destinations
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {REGIONS.map((r) => (
+                <a
+                  key={r.slug}
+                  href={`/destinations/${r.slug}`}
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: 13, fontWeight: 300,
+                    color: "rgba(242,239,232,0.62)",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "rgba(242,239,232,0.95)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(242,239,232,0.62)")}
+                >
+                  {r.name}
+                </a>
+              ))}
             </div>
-            <div>
-              <p className="mb-4 text-[12px] font-medium tracking-tight text-[rgba(250,250,250,0.45)]">
-                Services
-              </p>
-              <ul className="flex flex-col gap-2.5">
-                {SERVICES.slice(0, 4).map((s) => (
-                  <li key={s.title}>
-                    <a
-                      href="#services"
-                      className="text-[14px] font-medium text-[rgba(250,250,250,0.78)] transition-colors hover:text-[#fafafa]"
-                    >
-                      {s.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <p style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 9, fontWeight: 500,
+              letterSpacing: "0.2em", textTransform: "uppercase",
+              color: "rgba(242,239,232,0.35)",
+              marginBottom: 20,
+            }}>
+              Services
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {SERVICES.map((s) => (
+                <a
+                  key={s.title}
+                  href="#services"
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: 13, fontWeight: 300,
+                    color: "rgba(242,239,232,0.62)",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "rgba(242,239,232,0.95)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(242,239,232,0.62)")}
+                >
+                  {s.title}
+                </a>
+              ))}
             </div>
-            <div>
-              <p className="mb-4 text-[12px] font-medium tracking-tight text-[rgba(250,250,250,0.45)]">
-                Contact
-              </p>
-              <ul className="flex flex-col gap-2.5">
-                <li>
-                  <a
-                    href={SITE.whatsappUrl}
-                    target="_blank"
-                    rel="noopener"
-                    className="text-[14px] font-medium text-[rgba(250,250,250,0.78)] transition-colors hover:text-[#fafafa]"
-                  >
-                    WhatsApp
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`mailto:${SITE.email}`}
-                    className="text-[14px] font-medium text-[rgba(250,250,250,0.78)] transition-colors hover:text-[#fafafa]"
-                  >
-                    {SITE.email}
-                  </a>
-                </li>
-                {NAV.slice(2).map((n) => (
-                  <li key={n.href}>
-                    <a
-                      href={n.href}
-                      className="text-[14px] font-medium text-[rgba(250,250,250,0.78)] transition-colors hover:text-[#fafafa]"
-                    >
-                      {n.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <p style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 9, fontWeight: 500,
+              letterSpacing: "0.2em", textTransform: "uppercase",
+              color: "rgba(242,239,232,0.35)",
+              marginBottom: 20,
+            }}>
+              Contact
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {[
+                { label: "WhatsApp", href: SITE.whatsappUrl, external: true },
+                { label: SITE.email, href: `mailto:${SITE.email}` },
+                { label: "Worldwide · 24/7", href: "#contact" },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener" : undefined}
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: 13, fontWeight: 300,
+                    color: "rgba(242,239,232,0.62)",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "rgba(242,239,232,0.95)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(242,239,232,0.62)")}
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
+        {/* Bottom */}
         <div
-          className="mt-16 flex flex-col gap-2 border-t pt-6 text-[12.5px] font-medium text-[rgba(250,250,250,0.45)] sm:flex-row sm:justify-between"
-          style={{ borderColor: "rgba(255,255,255,0.1)" }}
+          style={{
+            marginTop: 32,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 12,
+          }}
         >
-          <span>© 2026 {SITE.name}</span>
-          <span>Luxury Ski Travel · Argentina · USA · Europe</span>
+          <span style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 10.5, fontWeight: 300,
+            color: "rgba(242,239,232,0.28)",
+            letterSpacing: "0.04em",
+          }}>
+            © 2026 Patagonia Living
+          </span>
+          <span style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 10.5, fontWeight: 300,
+            color: "rgba(242,239,232,0.28)",
+            letterSpacing: "0.04em",
+          }}>
+            Luxury Ski Travel · Argentina · USA · Europe
+          </span>
         </div>
       </div>
     </footer>

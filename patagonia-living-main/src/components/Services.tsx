@@ -15,7 +15,7 @@ export default function Services() {
       <div className="container-x">
 
         {/* Header */}
-        <div className="reveal" style={{ marginBottom: 64 }}>
+        <div className="reveal" style={{ marginBottom: 48 }}>
           <p className="eyebrow" style={{ marginBottom: 14 }}>What We Handle</p>
           <h2
             style={{
