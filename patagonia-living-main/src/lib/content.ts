@@ -416,6 +416,7 @@ export type Guide = {
   region: string;
   image: string;
   bio: string;
+  line: string; // editorial one-liner, ≤ 20 words
 };
 
 export const GUIDES: Guide[] = [
@@ -423,22 +424,41 @@ export const GUIDES: Guide[] = [
     name: "Tomás Aguirre",
     role: "Lead Mountain Guide",
     region: "Patagonia",
-    image: "/images/pat-interior.jpg",
+    image: "/images/team/tomas.jpg",
     bio: "Born in Bariloche. Twenty years on Cerro Catedral. Tomás leads every Patagonia heli-skiing operation personally.",
+    line: "Grew up reading the Patagonian wind. Still skis Catedral better than anyone we know.",
   },
   {
     name: "Elena Brunner",
     role: "Alpine Instructor",
     region: "Europe",
-    image: "/images/pat-room.jpg",
+    image: "/images/team/elena.jpg",
     bio: "Former Swiss national team member. Elena specializes in technical instruction at Zermatt, St. Moritz, and Courchevel.",
+    line: "Raced for Switzerland. Now teaches the precise, quiet technique the Alps are built on.",
   },
   {
     name: "Jack Mercer",
     role: "Backcountry Specialist",
     region: "Rockies",
-    image: "/images/pat-dining.jpg",
+    image: "/images/team/jack.jpg",
     bio: "AMGA-certified and AIARE level 2. Jack has guided off-piste in Aspen and Vail for over a decade.",
+    line: "Knows which bowl filled overnight before the patrol drops the rope.",
+  },
+  {
+    name: "Sofía Lange",
+    role: "Travel Director",
+    region: "Worldwide",
+    image: "/images/team/sofia.jpg",
+    bio: "Fifteen years designing private mountain itineraries. Sofía builds every trip from a blank page.",
+    line: "Has stayed in every room she books you. Remembers which ones face the sunrise.",
+  },
+  {
+    name: "Martín Vidal",
+    role: "Concierge & Logistics",
+    region: "Worldwide",
+    image: "/images/team/martin.jpg",
+    bio: "Private aviation, transfers, restaurants. Martín handles the parts of a trip you never see.",
+    line: "The reason your flight, your car and your table all happen to align.",
   },
 ];
 
@@ -498,6 +518,103 @@ export const STORIES: Story[] = [
       "Ignore the town. The Corviglia runs above the lake are some of the finest groomed terrain in Europe, and the Kulm Hotel is one of the great places to wake up in the Alps.",
     image: "/hotels/europe-stmoritz-kulm-hotel-st-moritz.jpg",
     readTime: "6 min",
+  },
+];
+
+// ─── THE MOUNTAINS · LONG-FORM ARTICLES ──────────────────────────────────────
+
+export type Article = {
+  slug: string;
+  category: string;                 // e.g. "Cerro Catedral"
+  place: string;                    // e.g. "Patagonia, Argentina"
+  region: "patagonia" | "usa";      // filter group
+  title: string;
+  dek: string;                      // one-line standfirst
+  readTime: string;
+  image: string;
+  body: string[];                   // paragraphs
+};
+
+export const ARTICLES: Article[] = [
+  {
+    slug: "cerro-catedral",
+    category: "Cerro Catedral",
+    place: "Bariloche, Patagonia",
+    region: "patagonia",
+    title: "The Giant at the Bottom of the World",
+    dek: "South America's largest ski area, read the way the locals read it.",
+    readTime: "4 min",
+    image: "/images/articles/cerro-catedral.jpg",
+    body: [
+      "The first time the gondola clears the line of lenga trees, most people stop talking. Below you, Lago Nahuel Huapi spreads out like an inland sea — cold, deep blue, fed by glaciers and ringed by peaks that never made it onto anyone's bucket list. This is the view you ski toward all day at Cerro Catedral, and it never stops working on you.",
+      "Catedral is the largest ski resort in South America — just under 1,200 hectares of terrain rising from a base at 1,030 metres to a summit a little above 2,100. Half of that is groomed; the other half is open off-piste, the kind of unmarked, wind-sculpted country that rewards anyone willing to read it. Near the top sits Refugio Lynch, a mountain hut perched where the weather writes its own rules.",
+      "What outsiders miss is that Patagonian snow behaves differently. It comes off the Pacific heavy and full of moisture, and the wind moves it constantly — loading one face, scouring the next. The locals don't fight this. They ski with the wind rather than against the clock, chasing the aspects that filled overnight and leaving the scoured ones alone. Spend a morning following someone who grew up here and you start to read the mountain as a living thing rather than a trail map.",
+      "The season is short and honest — roughly July to mid-September — and the weather makes no promises. But when it aligns, when the sky clears and the lake turns to glass two thousand metres below your skis, there is nowhere in the Andes you would rather be standing.",
+    ],
+  },
+  {
+    slug: "vail",
+    category: "Vail",
+    place: "Colorado, United States",
+    region: "usa",
+    title: "Why the Experts Keep Coming Back",
+    dek: "Seven bowls, six miles of open snow, and a village built from memory.",
+    readTime: "4 min",
+    image: "/images/articles/vail.jpg",
+    body: [
+      "You don't understand Vail until you ski over the back of it. The front mountain is excellent — long, civilised, immaculately groomed — but it's a curtain. Drop over the ridge and the Back Bowls open in front of you: seven treeless alpine basins running six miles end to end, more than three thousand acres of open snow with nothing between you and the far side of the Rockies.",
+      "That scale isn't an accident. In 1957, a 10th Mountain Division veteran named Pete Siebert hiked seven hours to the summit with a local rancher, Earl Eaton, stood on Ptarmigan Ridge, and looked down at the backside for the first time. The resort opened in 1962. Today Vail covers 5,289 acres — the third-largest single mountain in the United States — and the bowls remain its beating heart.",
+      "The village is the other half of the story. Siebert had spent time in the Alps, and he built Vail to feel like the Tyrol — narrow streets, steep gabled roofs pitched to shed the snow, the warm light of a European mountain town at dusk. It is a piece of theatre, and it works. After a day in the bowls, walking those streets feels exactly right.",
+      "Ask a serious skier why they return to Vail and they rarely mention the lifts or the lodges. They talk about a powder morning in the bowls in January, the whole expanse untracked, the cold thin air, and the rare sense — almost gone elsewhere — of having more mountain in front of you than you could ski in a week.",
+    ],
+  },
+  {
+    slug: "aspen",
+    category: "Aspen",
+    place: "Colorado, United States",
+    region: "usa",
+    title: "Four Mountains, One Idea",
+    dek: "A silver town that became four ski areas — and never lost the plot.",
+    readTime: "4 min",
+    image: "/images/articles/aspen.jpg",
+    body: [
+      "Aspen is really four mountains wearing one name, and the trick is knowing which to ski on a given morning. They sit minutes apart, share a single town, and could not be more different in character. The mistake visitors make is treating them as interchangeable. The people who love Aspen treat them as a wardrobe.",
+      "Aspen Mountain — Ajax — is where it began in 1946, its runs cut by veterans of the 10th Mountain Division straight down the fall line above town. It is steep, classic, and unforgiving in the best way. Aspen Highlands is the locals' mountain: less polished, more honest, crowned by Highland Bowl, a hike-to double-black that pays you back with 360-degree views and some of the finest expert terrain in Colorado.",
+      "Then there is Buttermilk — gentle enough to learn on, yet home to one of the longest slopestyle parks in the world — and Snowmass, which is larger than the other three combined and deep enough to disappear into for days. One lift ticket covers all four. Most people never ski them all in a single trip, and that is part of the appeal: there is always a reason to come back.",
+      "Underneath it sits a Victorian silver town that never tore down its past. The brick storefronts, the high ceilings, the old hotels — they are real, not staged. The après is part of the ritual too; Cloud Nine, up at Highlands, is the liveliest table on the hill. But strip all of it away and Aspen still holds, because the skiing was always the point.",
+    ],
+  },
+  {
+    slug: "beaver-creek",
+    category: "Beaver Creek",
+    place: "Colorado, United States",
+    region: "usa",
+    title: "Colorado's Best-Kept Secret",
+    dek: "The mountain the people who know choose over Vail.",
+    readTime: "3 min",
+    image: "/images/articles/beaver-creek.jpg",
+    body: [
+      "There is a gatehouse on Avon Road, and everything about Beaver Creek follows from it. You don't pass through Beaver Creek on the way to somewhere else; there is no through-traffic, no accident of geography that brings strangers in. Everyone in the village chose to be there. It gives the whole place a stillness that its larger neighbour, ten minutes down the valley, simply doesn't have.",
+      "That neighbour is Vail, and the comparison is unavoidable. Vail gets the headlines, the crowds, the six-mile bowls. Beaver Creek gets the mountain to itself on a Tuesday. Its 2,082 acres rise from a base at 8,100 feet to a summit of 11,440 — beautifully groomed, quietly demanding where you want it to be, and rarely busy enough to wait in a lift line.",
+      "The details are what give it away. Heated walkways through the village. Ski valets who take your equipment at the end of the run. And, at three o'clock every afternoon at the base, someone handing out warm chocolate-chip cookies to anyone skiing past — a small, almost absurd gesture that tells you exactly what kind of resort this is.",
+      "People who have skied everywhere tend to end up here, and they tend to be quiet about it. Beaver Creek doesn't announce itself. It assumes you already know what you are looking for: a serious mountain without the spectacle, and an afternoon that ends with a cookie in your glove and no one in your way.",
+    ],
+  },
+  {
+    slug: "breckenridge",
+    category: "Breckenridge",
+    place: "Colorado, United States",
+    region: "usa",
+    title: "Skiing Above the Trees",
+    dek: "A gold-rush town, and the highest chairlift on the continent.",
+    readTime: "4 min",
+    image: "/images/articles/breckenridge.jpg",
+    body: [
+      "At the top of Breckenridge the trees simply stop. Above a certain line nothing grows, and the mountain becomes a world of open bowls, wind-packed chutes and thin, brilliant air. To reach the highest of it you ride the Imperial Express SuperChair to 12,840 feet — the highest chairlift in North America — and step off somewhere that used to take a forty-five-minute hike to earn.",
+      "That ride buys you a kind of skiing most people never get in-bounds: more than four hundred acres of high-alpine terrain above the treeline, all bowls and steeps and long sightlines. Peak 6, opened in 2013, added another five hundred acres of the same — wide-open snow with the curve of the Tenmile Range running away in every direction. It is exposed, serious country, and on a clear morning it feels like the roof of the continent.",
+      "Then you ski back down into 1859. Gold was found in the Blue River that August, and the town that grew up around it never erased itself — Breckenridge still keeps the longest Victorian main street in Colorado, low clapboard storefronts in faded colours, the whole thing improbably intact beneath the peaks.",
+      "That contrast is the appeal. Few places ask you to ski the thin air at thirteen thousand feet in the morning and walk a gold-rush street at night. Breckenridge does both without trying, and the altitude — punishing, exhilarating — stays with you the entire time.",
+    ],
   },
 ];
 

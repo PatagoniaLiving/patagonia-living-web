@@ -88,6 +88,46 @@ img { display: block; max-width: 100%; }
 .img-rise > img { transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
 .img-rise:hover > img { transform: scale(1.05); }
 
+/* ============================================================
+   EDITORIAL — "The Mountains" journal + "The Team"
+   Cold / black-and-white image treatment for a unified, "Stylish
+   Life: Skiing" feel; warms slightly on hover.
+   ============================================================ */
+.ed-img {
+  filter: grayscale(1) contrast(1.03) brightness(0.97);
+  transition: filter 1.2s ease, transform 1.5s cubic-bezier(.2,.7,.2,1);
+}
+.ed-wrap:hover .ed-img {
+  filter: grayscale(0.45) contrast(1.0) brightness(1.0);
+  transform: scale(1.04);
+}
+
+/* Team rows alternate image/text sides on desktop */
+.team-row-rev .team-portrait { order: 2; }
+.team-row-rev .team-text { order: 1; }
+@media (max-width: 760px) {
+  .team-row-rev .team-portrait,
+  .team-row-rev .team-text { order: 0; }
+  /* keep portraits from dominating the phone screen */
+  .team-portrait { max-height: 78vh; }
+}
+
+/* Mount-based fade (re-runs when a filtered card remounts) */
+@keyframes edFade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.ed-fade { animation: edFade .7s cubic-bezier(.2,.7,.2,1) both; }
+@media (prefers-reduced-motion: reduce) { .ed-fade { animation: none; } }
+
+/* Long-form article body — generous measure and leading */
+.article-body p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: #423d38;
+  line-height: 1.95;
+  font-size: clamp(16px, 1.2vw, 17px);
+  margin-bottom: 1.5em;
+}
+.article-body p:last-child { margin-bottom: 0; }
+
 /* Hero entrance */
 @keyframes heroIn { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
 .hero-in { opacity: 0; animation: heroIn 1s cubic-bezier(.2,.7,.2,1) forwards; }
@@ -282,7 +322,7 @@ img { display: block; max-width: 100%; }
 }
 .nav-sheet a:last-of-type { border-bottom: none; }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .nav-desktop { display: none; }
   .nav-burger  {
     display: inline-flex; flex-direction: column; justify-content: center;

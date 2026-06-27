@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { GUIDES } from "@/lib/content";
 
 export default function Guides() {
+  const team = GUIDES.slice(0, 3);
   return (
     <section
       id="guides"
@@ -14,24 +16,41 @@ export default function Guides() {
           className="reveal"
           style={{
             display: "flex",
-            flexDirection: "column",
-            gap: 8,
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
+            gap: 20,
             marginBottom: 56,
           }}
         >
-          <p className="eyebrow">The Team</p>
-          <h2
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <p className="eyebrow">The Team</p>
+            <h2
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(32px,4.5vw,56px)",
+                fontWeight: 300,
+                color: "var(--ink)",
+                lineHeight: 1.06,
+                maxWidth: "20ch",
+              }}
+            >
+              Guides who know every run they book.
+            </h2>
+          </div>
+          <Link
+            href="/about"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(32px,4.5vw,56px)",
-              fontWeight: 300,
-              color: "var(--ink)",
-              lineHeight: 1.06,
-              maxWidth: "20ch",
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 10, fontWeight: 500,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "#0f0e0c",
+              borderBottom: "1px solid rgba(15,14,12,0.3)",
+              paddingBottom: 4,
             }}
           >
-            Guides who know every run they book.
-          </h2>
+            Meet the team →
+          </Link>
         </div>
 
         <div
@@ -41,7 +60,7 @@ export default function Guides() {
             gap: 16,
           }}
         >
-          {GUIDES.map((g, i) => (
+          {team.map((g, i) => (
             <div
               key={g.name}
               className={`reveal reveal-d${i + 1} img-rise`}

@@ -4,8 +4,9 @@ import Link from "next/link";
 
 const LINKS = [
   { label: "Destinations", href: "/destinations" },
+  { label: "The Mountains", href: "/mountains" },
   { label: "Services", href: "/#services" },
-  { label: "About", href: "/#guides" },
+  { label: "About", href: "/about" },
 ];
 
 export default function SiteNav() {
