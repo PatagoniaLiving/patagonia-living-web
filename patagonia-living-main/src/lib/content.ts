@@ -699,7 +699,7 @@ export const HOTELS: Hotel[] = [
       "Best location on the pedestrian mall",
     ],
     image: "/hotels/usa-aspen-w-aspen.jpg",
-    featured: false,
+    featured: true,
   },
 
   // ── USA / VAIL ───────────────────────────────────────────────────────────
