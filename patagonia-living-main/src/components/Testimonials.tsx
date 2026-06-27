@@ -50,11 +50,11 @@ export default function Testimonials() {
               <blockquote
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(18px,2vw,24px)",
+                  fontSize: "clamp(22px,2.4vw,30px)",
                   fontWeight: 300,
                   fontStyle: "italic",
-                  lineHeight: 1.5,
-                  color: "rgba(242,239,232,0.82)",
+                  lineHeight: 1.45,
+                  color: "rgba(242,239,232,0.86)",
                   margin: 0,
                 }}
               >
@@ -63,17 +63,17 @@ export default function Testimonials() {
               <figcaption>
                 <p style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: 12, fontWeight: 500,
-                  color: "rgba(242,239,232,0.75)",
+                  fontSize: 13, fontWeight: 500,
+                  color: "rgba(242,239,232,0.80)",
                   letterSpacing: "0.04em",
                 }}>
                   {t.name}
                 </p>
                 <p style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: 11, fontWeight: 300,
+                  fontSize: 12, fontWeight: 300,
                   color: "#B8965A",
-                  marginTop: 4, letterSpacing: "0.04em",
+                  marginTop: 5, letterSpacing: "0.04em",
                 }}>
                   {t.detail}
                 </p>

@@ -80,7 +80,7 @@ export default function Guides() {
               >
                 <p style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(18px,2vw,22px)",
+                  fontSize: "clamp(22px,2.4vw,30px)",
                   fontWeight: 400,
                   color: "rgba(242,239,232,0.95)",
                   lineHeight: 1.1,
@@ -89,10 +89,10 @@ export default function Guides() {
                 </p>
                 <p style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: 10, fontWeight: 400,
+                  fontSize: 11, fontWeight: 400,
                   letterSpacing: "0.08em",
                   color: "#B8965A",
-                  marginTop: 6,
+                  marginTop: 8,
                 }}>
                   {g.role} · {g.region}
                 </p>
