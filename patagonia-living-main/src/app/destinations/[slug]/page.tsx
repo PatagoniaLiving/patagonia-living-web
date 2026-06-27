@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { REGIONS, SERVICES, HOTELS, SITE } from "@/lib/content";
+import { REGIONS, SERVICES, HOTELS, RESORTS, SITE } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -35,6 +35,7 @@ export default async function DestinationPage({
 
   const otherRegions = REGIONS.filter((r) => r.slug !== slug);
   const regionSlug = slug as "patagonia" | "usa" | "europe";
+  const regionResorts = RESORTS.filter((r) => r.region === regionSlug);
   const featuredHotels = HOTELS.filter((h) => h.region === regionSlug && h.featured);
   const allHotels = HOTELS.filter((h) => h.region === regionSlug);
 
@@ -203,8 +204,8 @@ export default async function DestinationPage({
           ))}
         </div>
 
-        {/* ── Hotels ── */}
-        {featuredHotels.length > 0 && (
+        {/* ── Resorts ── */}
+        {regionResorts.length > 0 && (
           <section
             style={{
               background: "var(--background)",
@@ -212,147 +213,101 @@ export default async function DestinationPage({
             }}
           >
             <div className="container-x">
-              <div className="reveal" style={{ marginBottom: 40 }}>
-                <p className="eyebrow" style={{ marginBottom: 12 }}>Where We Stay</p>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 12 }}>
-                  <h2
-                    style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: "clamp(28px,3.5vw,48px)",
-                      fontWeight: 300, color: "var(--ink)", lineHeight: 1.06,
-                    }}
-                  >
-                    Curated hotels in {region.name}.
-                  </h2>
-                  {allHotels.length > 0 && (
-                    <span style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: 11, fontWeight: 300, color: "var(--stone)",
-                    }}>
-                      {allHotels.length} properties
-                    </span>
-                  )}
-                </div>
+              <div className="reveal" style={{ marginBottom: 48 }}>
+                <p className="eyebrow" style={{ marginBottom: 12 }}>Ski Resorts</p>
+                <h2
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "clamp(28px,3.5vw,48px)",
+                    fontWeight: 300, color: "var(--ink)", lineHeight: 1.06,
+                  }}
+                >
+                  Choose your resort in {region.name}.
+                </h2>
               </div>
 
-              {/* Featured 5 cards */}
               <div
                 className="reveal"
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
                   gap: 16,
-                  marginBottom: 48,
                 }}
               >
-                {featuredHotels.map((hotel) => (
-                  <Link
-                    key={hotel.slug}
-                    href={`/hotels/${hotel.slug}`}
-                    style={{ display: "block", textDecoration: "none" }}
-                  >
-                    <div
-                      style={{
-                        position: "relative", aspectRatio: "4/3",
-                        overflow: "hidden", borderRadius: 12, marginBottom: 16,
-                      }}
+                {regionResorts.map((resort, i) => {
+                  const resortHotelCount = allHotels.filter((h) => h.resortSlug === resort.slug).length;
+                  return (
+                    <Link
+                      key={resort.slug}
+                      href={`/resorts/${resort.slug}`}
+                      className={`reveal reveal-d${Math.min(i + 1, 4)}`}
+                      style={{ display: "block", textDecoration: "none" }}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={hotel.image} alt={hotel.name}
+                      <div
                         style={{
-                          position: "absolute", inset: 0,
-                          width: "100%", height: "100%",
-                          objectFit: "cover",
-                          filter: "saturate(0.80) brightness(0.62)",
-                          transition: "transform 1.1s ease",
-                        }}
-                      />
-                      <div style={{
-                        position: "absolute", inset: 0,
-                        background: "linear-gradient(180deg, transparent 40%, rgba(10,12,15,0.88) 100%)",
-                      }} />
-                      <div style={{ position: "absolute", bottom: 20, left: 20, right: 20 }}>
-                        <p style={{
-                          fontFamily: "'Montserrat', sans-serif",
-                          fontSize: 9, fontWeight: 500,
-                          letterSpacing: "0.18em", textTransform: "uppercase",
-                          color: "#B8965A", marginBottom: 6,
-                        }}>
-                          {hotel.category} · {hotel.resort}
-                        </p>
-                        <p style={{
-                          fontFamily: "'Cormorant Garamond', serif",
-                          fontSize: "clamp(16px,1.8vw,21px)",
-                          fontWeight: 400, color: "rgba(242,239,232,0.95)", lineHeight: 1.15,
-                        }}>
-                          {hotel.name}
-                        </p>
-                      </div>
-                    </div>
-                    <p style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: 11.5, fontWeight: 300, color: "var(--stone)", lineHeight: 1.6,
-                    }}>
-                      {hotel.tagline}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-
-              {/* All hotels list */}
-              {allHotels.length > featuredHotels.length && (
-                <div className="reveal" style={{ borderTop: "1px solid var(--line)", paddingTop: 40 }}>
-                  <p style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontSize: 9, fontWeight: 500,
-                    letterSpacing: "0.22em", textTransform: "uppercase",
-                    color: "var(--stone)", marginBottom: 20,
-                  }}>
-                    All Properties
-                  </p>
-                  <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-                    gap: 1,
-                    background: "var(--line)",
-                    border: "1px solid var(--line)",
-                  }}>
-                    {allHotels.map((hotel) => (
-                      <Link
-                        key={hotel.slug}
-                        href={`/hotels/${hotel.slug}`}
-                        style={{
-                          display: "block", background: "var(--background)",
-                          padding: "22px 24px", textDecoration: "none",
+                          position: "relative", aspectRatio: "4/3",
+                          overflow: "hidden", borderRadius: 14, marginBottom: 18,
                         }}
                       >
-                        <p style={{
-                          fontFamily: "'Montserrat', sans-serif",
-                          fontSize: 9, fontWeight: 500,
-                          letterSpacing: "0.16em", textTransform: "uppercase",
-                          color: "#B8965A", marginBottom: 7,
-                        }}>
-                          {hotel.resort}
-                        </p>
-                        <p style={{
-                          fontFamily: "'Cormorant Garamond', serif",
-                          fontSize: "clamp(15px,1.5vw,18px)",
-                          fontWeight: 400, color: "var(--ink)", lineHeight: 1.2, marginBottom: 4,
-                        }}>
-                          {hotel.name}
-                        </p>
-                        <p style={{
-                          fontFamily: "'Montserrat', sans-serif",
-                          fontSize: 10, fontWeight: 300, color: "var(--stone)",
-                        }}>
-                          {hotel.category}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={resort.image} alt={resort.name}
+                          style={{
+                            position: "absolute", inset: 0,
+                            width: "100%", height: "100%",
+                            objectFit: "cover",
+                            filter: "saturate(0.80) brightness(0.58)",
+                            transition: "transform 1.2s ease",
+                          }}
+                        />
+                        <div style={{
+                          position: "absolute", inset: 0,
+                          background: "linear-gradient(180deg, transparent 35%, rgba(10,12,15,0.90) 100%)",
+                        }} />
+                        <div style={{ position: "absolute", bottom: 20, left: 20, right: 20 }}>
+                          <p style={{
+                            fontFamily: "'Montserrat', sans-serif",
+                            fontSize: 9, fontWeight: 500,
+                            letterSpacing: "0.18em", textTransform: "uppercase",
+                            color: "#B8965A", marginBottom: 6,
+                          }}>
+                            {resort.country} · {resort.elevation}
+                          </p>
+                          <p style={{
+                            fontFamily: "'Cormorant Garamond', serif",
+                            fontSize: "clamp(20px,2.2vw,28px)",
+                            fontWeight: 400, color: "rgba(242,239,232,0.96)", lineHeight: 1.1,
+                          }}>
+                            {resort.name}
+                          </p>
+                        </div>
+                        {resortHotelCount > 0 && (
+                          <span style={{
+                            position: "absolute", top: 16, right: 16,
+                            background: "rgba(10,12,15,0.55)",
+                            backdropFilter: "blur(8px)",
+                            borderRadius: 100,
+                            padding: "6px 12px",
+                            fontFamily: "'Montserrat', sans-serif",
+                            fontSize: 9, fontWeight: 500,
+                            letterSpacing: "0.1em",
+                            color: "rgba(242,239,232,0.75)",
+                          }}>
+                            {resortHotelCount} {resortHotelCount === 1 ? "hotel" : "hotels"}
+                          </span>
+                        )}
+                      </div>
+                      <p style={{
+                        fontFamily: "'Montserrat', sans-serif",
+                        fontSize: 11.5, fontWeight: 300,
+                        color: "var(--stone)", lineHeight: 1.6,
+                      }}>
+                        {resort.tagline}
+                      </p>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </section>
         )}

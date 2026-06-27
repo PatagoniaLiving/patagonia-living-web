@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { HOTELS, REGIONS, SITE } from "@/lib/content";
+import { HOTELS, REGIONS, RESORTS, SITE } from "@/lib/content";
 
 export async function generateStaticParams() {
   return HOTELS.map((h) => ({ slug: h.slug }));
@@ -22,6 +22,7 @@ export default async function HotelPage({ params }: { params: Promise<{ slug: st
   if (!hotel) notFound();
 
   const region = REGIONS.find((r) => r.slug === hotel.region);
+  const resort = RESORTS.find((r) => r.slug === hotel.resortSlug);
   const related = HOTELS.filter(
     (h) => h.region === hotel.region && h.slug !== hotel.slug
   ).slice(0, 3);
@@ -55,19 +56,31 @@ export default async function HotelPage({ params }: { params: Promise<{ slug: st
             padding: "clamp(32px,5vw,72px)",
           }}
         >
-          <Link
-            href={`/destinations/${hotel.region}`}
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: 10, fontWeight: 500,
-              letterSpacing: "0.18em", textTransform: "uppercase",
-              color: "rgba(242,239,232,0.65)",
-              marginBottom: 20,
-              display: "inline-flex", alignItems: "center", gap: 8,
-            }}
-          >
-            ← {region?.name ?? hotel.region}
-          </Link>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
+            <Link
+              href={`/destinations/${hotel.region}`}
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 10, fontWeight: 400,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "rgba(242,239,232,0.40)",
+              }}
+            >
+              {region?.name ?? hotel.region}
+            </Link>
+            <span style={{ color: "rgba(242,239,232,0.25)", fontSize: 10 }}>›</span>
+            <Link
+              href={`/resorts/${hotel.resortSlug}`}
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 10, fontWeight: 500,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "rgba(242,239,232,0.65)",
+              }}
+            >
+              ← {resort?.name ?? hotel.resort}
+            </Link>
+          </div>
           <p
             style={{
               fontFamily: "'Montserrat', sans-serif",
