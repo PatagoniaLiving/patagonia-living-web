@@ -120,7 +120,7 @@ export default function SiteFooter() {
               {SERVICES.map((s) => (
                 <a
                   key={s.title}
-                  href="#services"
+                  href="/services"
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: 13, fontWeight: 300,

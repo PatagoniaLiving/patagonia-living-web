@@ -3,7 +3,6 @@ import { ARTICLES } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
-import FloatingCTA from "@/components/FloatingCTA";
 import MountainsClient from "./MountainsClient";
 
 export const metadata: Metadata = {
@@ -19,7 +18,6 @@ export default function MountainsPage() {
       <ScrollReveal />
       <MountainsClient articles={ARTICLES} />
       <SiteFooter />
-      <FloatingCTA />
     </>
   );
 }

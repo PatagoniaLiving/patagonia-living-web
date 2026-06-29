@@ -1,3 +1,76 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+
+const STATS = [
+  { value: "8+", label: "Years guiding" },
+  { value: "21", label: "Ski resorts" },
+  { value: "3", label: "Continents" },
+  { value: "48h", label: "Proposal turnaround" },
+  { value: "100%", label: "Personally vetted" },
+];
+
+function CountUp({ value, label }: { value: string; label: string }) {
+  const m = value.match(/^(\d+)(.*)$/);
+  const target = m ? parseInt(m[1], 10) : 0;
+  const suffix = m ? m[2] : "";
+  const [n, setN] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const done = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { setN(target); return; }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !done.current) {
+            done.current = true;
+            const dur = 1600;
+            const t0 = performance.now();
+            const tick = (t: number) => {
+              const p = Math.min((t - t0) / dur, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setN(Math.round(eased * target));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [target]);
+
+  return (
+    <div ref={ref} style={{ borderLeft: "1px solid rgba(184,150,90,0.4)", paddingLeft: 16 }}>
+      <p style={{
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: "clamp(28px,3.5vw,44px)",
+        fontWeight: 300,
+        color: "rgba(242,239,232,0.95)",
+        lineHeight: 1,
+      }}>
+        {n}{suffix}
+      </p>
+      <p style={{
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: 9, fontWeight: 500,
+        letterSpacing: "0.16em", textTransform: "uppercase",
+        color: "rgba(242,239,232,0.40)",
+        marginTop: 6,
+      }}>
+        {label}
+      </p>
+    </div>
+  );
+}
+
 export default function Motion() {
   return (
     <section style={{ background: "var(--background)", padding: "clamp(56px,7vw,96px) clamp(20px,5vw,72px) clamp(64px,9vw,120px)" }}>
@@ -37,7 +110,6 @@ export default function Motion() {
               padding: "clamp(28px,4vw,56px)",
             }}
           >
-            {/* Eyebrow */}
             <p style={{
               fontFamily: "'Montserrat', sans-serif",
               fontSize: 10, fontWeight: 500,
@@ -47,7 +119,6 @@ export default function Motion() {
               Our Approach
             </p>
 
-            {/* Bottom: quote + stats */}
             <div>
               <h2
                 style={{
@@ -59,38 +130,13 @@ export default function Motion() {
                   marginBottom: 40,
                 }}
               >
-                We've skied every run we book.{" "}
-                <em style={{ color: "rgba(242,239,232,0.55)" }}>That's the difference.</em>
+                We&apos;ve skied every run we book.{" "}
+                <em style={{ color: "rgba(242,239,232,0.55)" }}>That&apos;s the difference.</em>
               </h2>
 
-              {/* Stats row — no pills, just clean numbers */}
-              <div style={{ display: "flex", gap: "clamp(32px,5vw,64px)", flexWrap: "wrap" }}>
-                {[
-                  { value: "21", label: "Ski resorts" },
-                  { value: "3", label: "Continents" },
-                  { value: "48h", label: "Proposal turnaround" },
-                  { value: "100%", label: "Personally vetted" },
-                ].map((s) => (
-                  <div key={s.label} style={{ borderLeft: "1px solid rgba(184,150,90,0.4)", paddingLeft: 16 }}>
-                    <p style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: "clamp(28px,3.5vw,44px)",
-                      fontWeight: 300,
-                      color: "rgba(242,239,232,0.95)",
-                      lineHeight: 1,
-                    }}>
-                      {s.value}
-                    </p>
-                    <p style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: 9, fontWeight: 500,
-                      letterSpacing: "0.16em", textTransform: "uppercase",
-                      color: "rgba(242,239,232,0.40)",
-                      marginTop: 6,
-                    }}>
-                      {s.label}
-                    </p>
-                  </div>
+              <div style={{ display: "flex", gap: "clamp(28px,4vw,56px)", flexWrap: "wrap" }}>
+                {STATS.map((s) => (
+                  <CountUp key={s.label} value={s.value} label={s.label} />
                 ))}
               </div>
             </div>

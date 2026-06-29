@@ -102,6 +102,13 @@ img { display: block; max-width: 100%; }
   transform: scale(1.04);
 }
 
+/* Services page rows alternate image/text sides on desktop */
+.svc-rev .svc-media { order: 2; }
+.svc-rev .svc-body  { order: 1; }
+@media (max-width: 760px) {
+  .svc-rev .svc-media, .svc-rev .svc-body { order: 0; }
+}
+
 /* Team rows alternate image/text sides on desktop */
 .team-row-rev .team-portrait { order: 2; }
 .team-row-rev .team-text { order: 1; }
@@ -339,26 +346,43 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================================
-   FLOATING MOBILE CTA — sticky WhatsApp/plan button
+   PERSISTENT WHATSAPP BUTTON — fixed on every page, all viewports
    ============================================================ */
-.float-cta {
-  position: fixed; left: 16px; right: 16px; bottom: 16px;
-  z-index: 90;
-  display: none;
-  align-items: center; justify-content: center; gap: 10px;
-  background: #B8965A; color: #fff;
-  padding: 16px 24px; border-radius: 100px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-  box-shadow: 0 10px 30px rgba(10,12,15,0.35), 0 2px 8px rgba(10,12,15,0.25);
-  transform: translateY(140%);
-  transition: transform .45s cubic-bezier(.2,.7,.2,1);
+@keyframes fabIn { from { opacity: 0; transform: scale(0.6) translateY(12px); } to { opacity: 1; transform: none; } }
+.wpp-fab {
+  position: fixed;
+  right: clamp(18px, 2.5vw, 32px);
+  bottom: clamp(18px, 2.5vw, 32px);
+  z-index: 95;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 30px rgba(10,12,15,0.30), 0 3px 10px rgba(10,12,15,0.22);
+  animation: fabIn .5s cubic-bezier(.2,.7,.2,1) both .4s;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.float-cta.show { transform: translateY(0); }
+.wpp-fab:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 18px 40px rgba(10,12,15,0.34), 0 4px 12px rgba(10,12,15,0.26);
+}
+.wpp-fab::after {
+  content: "";
+  position: absolute; inset: 0; border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(37,211,102,0.55);
+  animation: wppPulse 2.6s ease-out infinite;
+}
+@keyframes wppPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.45); }
+  70%  { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
 @media (max-width: 760px) {
-  .float-cta { display: flex; }
-  /* keep the page footer clear of the floating bar */
-  body { padding-bottom: env(safe-area-inset-bottom); }
+  .wpp-fab { width: 54px; height: 54px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wpp-fab { animation: none; }
+  .wpp-fab::after { animation: none; }
 }
 
 /* ============================================================

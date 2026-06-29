@@ -131,7 +131,7 @@ export default function Hero() {
             See Destinations
           </a>
           <a
-            href="#contact"
+            href="/plan"
             style={{
               border: "1px solid rgba(242,239,232,0.22)",
               color: "rgba(242,239,232,0.82)",

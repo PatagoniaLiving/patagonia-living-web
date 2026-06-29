@@ -3,7 +3,6 @@ import { RESORTS, HOTELS, REGIONS } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
-import FloatingCTA from "@/components/FloatingCTA";
 import ResortClient from "./ResortClient";
 
 export async function generateStaticParams() {
@@ -42,7 +41,6 @@ export default async function ResortPage({ params }: { params: Promise<{ slug: s
         siblingResorts={siblingResorts}
       />
       <SiteFooter />
-      <FloatingCTA />
     </>
   );
 }

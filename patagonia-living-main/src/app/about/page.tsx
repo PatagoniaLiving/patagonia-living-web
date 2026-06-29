@@ -3,7 +3,6 @@ import { GUIDES, SITE } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
-import FloatingCTA from "@/components/FloatingCTA";
 
 export const metadata: Metadata = {
   title: "About — Patagonia Living",
@@ -154,7 +153,6 @@ export default function AboutPage() {
 
       </main>
       <SiteFooter />
-      <FloatingCTA />
     </>
   );
 }

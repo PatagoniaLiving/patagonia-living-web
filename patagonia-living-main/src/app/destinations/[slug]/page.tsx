@@ -5,7 +5,6 @@ import { REGIONS, SERVICES, HOTELS, RESORTS, SITE } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
-import FloatingCTA from "@/components/FloatingCTA";
 
 export async function generateStaticParams() {
   return REGIONS.map((r) => ({ slug: r.slug }));
@@ -359,7 +358,7 @@ export default async function DestinationPage({
                   scratch — matching accommodations, instruction, and logistics
                   to your group's specific needs.
                 </p>
-                <a href="#contact" className="btn-bronze">Plan a Trip to {region.name}</a>
+                <a href={SITE.whatsappUrl} target="_blank" rel="noopener" className="btn-bronze">Plan a Trip to {region.name}</a>
               </div>
 
               {/* Services list */}
@@ -390,11 +389,11 @@ export default async function DestinationPage({
                       <p
                         style={{
                           fontFamily: "'Montserrat', sans-serif",
-                          fontSize: 11,
+                          fontSize: 13,
                           fontWeight: 500,
-                          letterSpacing: "0.06em",
+                          letterSpacing: "0.04em",
                           color: "var(--ink)",
-                          marginBottom: 4,
+                          marginBottom: 6,
                         }}
                       >
                         {s.title}
@@ -402,10 +401,10 @@ export default async function DestinationPage({
                       <p
                         style={{
                           fontFamily: "'Montserrat', sans-serif",
-                          fontSize: 12,
+                          fontSize: 13.5,
                           fontWeight: 300,
                           color: "var(--stone)",
-                          lineHeight: 1.7,
+                          lineHeight: 1.75,
                         }}
                       >
                         {s.blurb}
@@ -592,7 +591,6 @@ export default async function DestinationPage({
 
       </main>
       <SiteFooter />
-      <FloatingCTA />
     </>
   );
 }

@@ -3,7 +3,6 @@ import { REGIONS, RESORTS, HOTELS } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
-import FloatingCTA from "@/components/FloatingCTA";
 
 export const metadata = {
   title: "Destinations — Patagonia Living",
@@ -215,7 +214,6 @@ export default function DestinationsPage() {
         </div>
       </main>
       <SiteFooter />
-      <FloatingCTA />
     </>
   );
 }

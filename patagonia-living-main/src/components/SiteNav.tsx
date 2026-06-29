@@ -5,7 +5,7 @@ import Link from "next/link";
 const LINKS = [
   { label: "Destinations", href: "/destinations" },
   { label: "The Mountains", href: "/mountains" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
 ];
 
@@ -118,7 +118,7 @@ export default function SiteNav() {
             </Link>
           ))}
           <a
-            href="/#contact"
+            href="/plan"
             style={{
               background: "#B8965A",
               color: "#fff",
@@ -158,7 +158,7 @@ export default function SiteNav() {
           </Link>
         ))}
         <a
-          href="/#contact"
+          href="/plan"
           onClick={() => setMenuOpen(false)}
           style={{
             marginTop: 18,

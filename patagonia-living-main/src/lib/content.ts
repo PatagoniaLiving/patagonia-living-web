@@ -297,10 +297,10 @@ export const SERVICES: Service[] = [
     detail:
       "We work exclusively with independent, vetted instructors — not resort staff pools. Each instructor is selected based on teaching style, language, and terrain expertise. We match them to your group before you land, so day one begins on the mountain, not in a queue.",
     features: [
-      "Instructors in Bariloche, Cerro Catedral, Vail, Aspen, Beaver Creek & Breckenridge",
+      "Instructors worldwide, literally",
       "All levels: first-timers to advanced off-piste",
       "Multi-day and full-season packages",
-      "Bilingual instructors available (English / Spanish)",
+      "Multilingual instructors (English, Spanish, Portuguese, French, Italian)",
       "Child-specialist instructors on request",
     ],
     image: "/images/service-lessons.jpg",
@@ -330,8 +330,8 @@ export const SERVICES: Service[] = [
       "From the moment you leave home to the moment your skis hit the snow, every transfer is pre-arranged. Commercial flight coordination, private charter options, helicopter transfers in Patagonia, and dedicated ground vehicles at every resort. No waiting, no guessing.",
     features: [
       "Commercial flight search and booking across all three regions",
-      "Private aviation on request (Buenos Aires → Bariloche, etc.)",
-      "Helicopter transfers in the Argentine Andes",
+      "Private aviation on request",
+      "Helicopter transfers worldwide",
       "Dedicated ground vehicles resort to resort",
       "Real-time transfer tracking for peace of mind",
     ],
@@ -347,7 +347,7 @@ export const SERVICES: Service[] = [
     features: [
       "Heli-skiing in the Argentine Patagonia Andes",
       "Off-piste and backcountry guided days in Aspen & Zermatt",
-      "Private mountain dinners (Vail back bowls, Courchevel peaks)",
+      "Private mountain dinners (Vail back bowls, Beaver Creek, Courchevel peaks & the Patagonian Andes)",
       "Snowmobile tours and glacier excursions",
       "Cultural extensions: wine, estancia, alpine gastronomy",
     ],

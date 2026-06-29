@@ -5,7 +5,6 @@ import { ARTICLES } from "@/lib/content";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
-import FloatingCTA from "@/components/FloatingCTA";
 
 export async function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
@@ -211,7 +210,6 @@ export default async function ArticlePage({
 
       </main>
       <SiteFooter />
-      <FloatingCTA />
     </>
   );
 }

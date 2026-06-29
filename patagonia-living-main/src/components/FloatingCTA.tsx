@@ -1,38 +1,25 @@
 "use client";
-import { useEffect, useState } from "react";
 import { SITE } from "@/lib/content";
 
 /**
- * Sticky mobile call-to-action. Hidden on desktop (CSS media query),
- * slides up once the visitor scrolls past the hero so the first
- * impression stays uncluttered.
+ * Persistent WhatsApp contact button — fixed bottom-right on every page,
+ * desktop and mobile. Always visible.
  */
 export default function FloatingCTA() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const handler = () => {
-      const past = window.scrollY > window.innerHeight * 0.6;
-      // Hide again near the very bottom so it doesn't cover the footer CTA
-      const nearBottom =
-        window.innerHeight + window.scrollY >
-        document.body.offsetHeight - 320;
-      setShow(past && !nearBottom);
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    handler();
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
   return (
     <a
       href={SITE.whatsappUrl}
       target="_blank"
       rel="noopener"
-      className={`float-cta${show ? " show" : ""}`}
-      aria-label="Plan your trip on WhatsApp"
+      className="wpp-fab"
+      aria-label="Contact us on WhatsApp"
     >
-      Plan My Trip
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false">
+        <path
+          fill="#fff"
+          d="M16.01 3.2c-7.06 0-12.79 5.72-12.8 12.77 0 2.25.59 4.45 1.71 6.39L3.1 28.8l6.6-1.73a12.8 12.8 0 0 0 6.31 1.6h.01c7.05 0 12.78-5.72 12.79-12.77a12.7 12.7 0 0 0-3.74-9.04 12.7 12.7 0 0 0-9.06-3.66Zm0 23.42h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.02 1.05 1.07-3.92-.25-.4a10.6 10.6 0 0 1-1.62-5.64c0-5.86 4.77-10.62 10.63-10.62a10.6 10.6 0 0 1 7.51 3.12 10.55 10.55 0 0 1 3.1 7.51c0 5.86-4.77 10.61-10.62 10.61Zm5.83-7.95c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1 1.25-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.54-.71-.55l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.64s1.13 3.06 1.29 3.27c.16.21 2.22 3.39 5.38 4.76.75.32 1.34.52 1.79.66.75.24 1.44.2 1.98.12.6-.09 1.89-.77 2.16-1.52.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"
+        />
+      </svg>
     </a>
   );
 }
