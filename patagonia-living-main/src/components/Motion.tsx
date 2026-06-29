@@ -5,7 +5,7 @@ const STATS = [
   { value: "8+", label: "Years guiding" },
   { value: "21", label: "Ski resorts" },
   { value: "3", label: "Continents" },
-  { value: "48h", label: "Proposal turnaround" },
+  { value: "24h", label: "Proposal turnaround" },
   { value: "100%", label: "Personally vetted" },
 ];
 

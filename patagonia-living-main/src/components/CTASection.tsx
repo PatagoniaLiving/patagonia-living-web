@@ -51,7 +51,7 @@ export default function CTASection() {
               }}
             >
               Share your destination, dates, and group size.
-              We'll send a tailored proposal within 48 hours — no commitments.
+              We'll send a tailored proposal within 24 hours — no commitments.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 36 }}>
               <a

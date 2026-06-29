@@ -117,7 +117,7 @@ export default function PlanClient() {
             fontSize: 11.5, fontWeight: 300,
             color: "#8a8480", lineHeight: 1.7, marginTop: 4,
           }}>
-            We reply with a tailored proposal within 48 hours. No commitment.
+            We reply with a tailored proposal within 24 hours. No commitment.
           </p>
         </div>
       </form>
@@ -169,7 +169,7 @@ export default function PlanClient() {
           {[
             ["Where", "Andes · Rockies · Alps"],
             ["Hours", "Worldwide · 24/7 in season"],
-            ["Response", "Tailored proposal within 48h"],
+            ["Response", "Tailored proposal within 24h"],
           ].map(([k, v]) => (
             <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: 16, padding: "10px 0" }}>
               <span style={{

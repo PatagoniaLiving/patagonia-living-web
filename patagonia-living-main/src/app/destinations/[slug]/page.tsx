@@ -576,7 +576,7 @@ export default async function DestinationPage({
                 marginBottom: 36,
               }}
             >
-              Share your dates and group size. We'll send a tailored proposal within 48 hours.
+              Share your dates and group size. We'll send a tailored proposal within 24 hours.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <a href={SITE.whatsappUrl} target="_blank" rel="noopener" className="btn-bronze">

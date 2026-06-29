@@ -373,7 +373,7 @@ export const SERVICES: Service[] = [
 
 export const STATS = [
   { value: "21", label: "Resorts across three continents" },
-  { value: "48h", label: "Tailored proposal turnaround" },
+  { value: "24h", label: "Tailored proposal turnaround" },
   { value: "100%", label: "Stays vetted in person" },
 ];
 

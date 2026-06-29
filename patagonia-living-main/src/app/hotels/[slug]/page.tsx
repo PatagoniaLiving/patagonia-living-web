@@ -260,7 +260,7 @@ export default async function HotelPage({ params }: { params: Promise<{ slug: st
                 color: "#8a8480", lineHeight: 1.7,
               }}
             >
-              Proposal within 48 hours. Every stay we book, we have personally stayed in.
+              Proposal within 24 hours. Every stay we book, we have personally stayed in.
             </p>
           </div>
         </div>

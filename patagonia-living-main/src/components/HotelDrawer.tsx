@@ -210,7 +210,7 @@ export default function HotelDrawer({ hotel, onClose }: Props) {
                 color: "#8a8480", lineHeight: 1.7,
                 marginTop: 20, textAlign: "center",
               }}>
-                Proposal within 48 hours. Every stay we book, we have personally stayed in.
+                Proposal within 24 hours. Every stay we book, we have personally stayed in.
               </p>
             </div>
           </>

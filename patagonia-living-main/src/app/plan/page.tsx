@@ -7,7 +7,7 @@ import PlanClient from "./PlanClient";
 export const metadata: Metadata = {
   title: "Plan My Trip — Patagonia Living",
   description:
-    "Tell us your destination, dates and group. We'll send a tailored ski-trip proposal within 48 hours. WhatsApp and email welcome.",
+    "Tell us your destination, dates and group. We'll send a tailored ski-trip proposal within 24 hours. WhatsApp and email welcome.",
 };
 
 export default function PlanPage() {
@@ -44,7 +44,7 @@ export default function PlanPage() {
             }}
           >
             Share your destination, dates and group size. We build the trip
-            from scratch and reply with a tailored proposal within 48 hours —
+            from scratch and reply with a tailored proposal within 24 hours —
             no commitment.
           </p>
         </header>

@@ -166,7 +166,7 @@ export default function Hero() {
           {[
             { value: "21", label: "Ski resorts" },
             { value: "3", label: "Continents" },
-            { value: "48h", label: "Custom proposal" },
+            { value: "24h", label: "Custom proposal" },
             { value: "100%", label: "Personally vetted" },
           ].map((s) => (
             <div key={s.label}>
