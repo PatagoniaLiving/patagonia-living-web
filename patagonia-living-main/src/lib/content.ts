@@ -2,8 +2,8 @@ export const SITE = {
   name: "Patagonia Living",
   tagline: "Luxury Ski Travel",
   email: "comercial@patagonialiving.com",
-  whatsapp: "5491100000000",
-  whatsappUrl: "https://wa.me/5491100000000",
+  whatsapp: "5492945906935",
+  whatsappUrl: "https://wa.me/5492945906935",
   basedIn: "Andes · Rockies · Alps",
 };
 
