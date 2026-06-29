@@ -3,7 +3,7 @@ import "./globals.css";
 import FloatingCTA from "@/components/FloatingCTA";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://patagonialiving.com"),
+  metadataBase: new URL("https://www.patagonialiving.com"),
   title: {
     default: "Patagonia Living — Luxury Ski Travel",
     template: "%s — Patagonia Living",
