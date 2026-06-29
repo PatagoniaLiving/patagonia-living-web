@@ -398,6 +398,30 @@ img { display: block; max-width: 100%; }
   .r-three { grid-template-columns: 1fr 1fr; } /* guides stay 2-up, not 1 giant */
 }
 
+/* ============================================================
+   MOBILE — Journal compacted, footer tidy, FAB clearance
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Journal: shrink a lot on phones */
+  .journal-section { padding-top: 46px !important; padding-bottom: 46px !important; }
+  .journal-dek { display: none !important; }
+  .journal-featured { margin-bottom: 30px !important; gap: 14px !important; }
+  .journal-featured > div:first-child { aspect-ratio: 16 / 10 !important; }
+  .journal-featured h3 { font-size: 21px !important; margin-bottom: 6px !important; }
+  .journal-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+  .journal-grid > a > div:first-child { aspect-ratio: 1 / 1 !important; margin-bottom: 9px !important; }
+  .journal-grid h3 { font-size: 15px !important; line-height: 1.15 !important; }
+
+  /* Footer: stack brand CTAs full-width, keep clear of the WhatsApp FAB */
+  .footer-cta-row { flex-direction: column; align-items: stretch; }
+  .footer-cta-row a { text-align: center; }
+  footer { padding-bottom: 96px; }
+
+  /* Contact CTA: tighter, less dead space */
+  .cta-contact { padding-top: 54px !important; padding-bottom: 54px !important; }
+  .cta-contact .reveal { gap: 28px !important; }
+}
+
 /* When the CTA two-up stacks, turn the left rule into a top rule */
 @media (max-width: 760px) {
   .cta-aside {

@@ -44,7 +44,7 @@ export default function SiteFooter() {
               Boutique ski travel agency. Bariloche, the Rockies, and the Alps —
               handled end to end.
             </p>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 }}>
+            <div className="footer-cta-row" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 }}>
               <a
                 href={SITE.whatsappUrl}
                 target="_blank"

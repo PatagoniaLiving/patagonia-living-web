@@ -129,8 +129,9 @@ export default function DestinationsPage() {
                   </div>
                 </Link>
 
-                {/* Resort cards row */}
+                {/* Resort cards row — desktop only; mobile shows just the 3 regions */}
                 <div
+                  className="hide-mobile"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",

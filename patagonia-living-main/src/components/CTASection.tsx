@@ -5,6 +5,7 @@ export default function CTASection() {
   return (
     <section
       id="contact"
+      className="cta-contact"
       style={{
         background: "#0A0C0F",
         padding: "clamp(72px,10vw,130px) clamp(20px,5vw,72px)",

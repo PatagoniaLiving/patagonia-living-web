@@ -8,6 +8,7 @@ export default function Stories() {
   return (
     <section
       id="stories"
+      className="journal-section"
       style={{
         background: "#F0EDE8",
         padding: "clamp(72px,10vw,130px) clamp(20px,5vw,72px)",
@@ -55,7 +56,7 @@ export default function Stories() {
         {featured && (
           <Link
             href={`/mountains/${featured.slug}`}
-            className="reveal r-two ed-wrap"
+            className="reveal r-two ed-wrap journal-featured"
             style={{ display: "grid", gap: "clamp(24px,4vw,56px)", alignItems: "center", textDecoration: "none", marginBottom: 64 }}
           >
             <div
@@ -95,7 +96,7 @@ export default function Stories() {
               >
                 {featured.title}
               </h3>
-              <p style={{
+              <p className="journal-dek" style={{
                 fontFamily: "'Montserrat', sans-serif",
                 fontSize: 13, fontWeight: 300,
                 color: "var(--stone)", lineHeight: 1.85,
@@ -117,6 +118,7 @@ export default function Stories() {
 
         {/* Grid of the rest */}
         <div
+          className="journal-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
@@ -166,7 +168,7 @@ export default function Stories() {
               >
                 {a.title}
               </h3>
-              <p style={{
+              <p className="journal-dek" style={{
                 fontFamily: "'Montserrat', sans-serif",
                 fontSize: 11.5, fontWeight: 300,
                 color: "var(--stone)", lineHeight: 1.6,
