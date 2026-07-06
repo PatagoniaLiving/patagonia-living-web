@@ -30,7 +30,7 @@ export const REGIONS: Region[] = [
     name: "North America",
     blurb:
       "Private ski lessons and curated stays across the Rockies, Utah, and the mountains of British Columbia. Vail, Aspen, Beaver Creek, Breckenridge, Deer Valley, Whistler, Park City, and more — the iconic North American resorts, handled without compromise.",
-    resorts: ["Aspen", "Vail", "Beaver Creek", "Breckenridge", "Deer Valley", "Stowe", "Lake Tahoe"],
+    resorts: ["Aspen", "Vail", "Beaver Creek", "Breckenridge", "Deer Valley", "Stowe", "Lake Tahoe", "Whistler", "Park City", "Copper Mountain"],
     image: "/images/usa-panel.jpg",
   },
   {
@@ -166,6 +166,42 @@ export const RESORTS: Resort[] = [
     description:
       "Lake Tahoe is a ski destination unlike any other in the US — a vast alpine lake surrounded by Sierra Nevada resorts, each with its own character. Palisades Tahoe (formerly Squaw Valley), Heavenly, and Northstar are the major resorts. The Ritz-Carlton Lake Tahoe and Edgewood Tahoe are the definitive luxury addresses here.",
     image: "/hotels/usa-tahoe-ritz-carlton-lake-tahoe.jpg",
+  },
+  {
+    slug: "whistler",
+    name: "Whistler",
+    region: "north-america",
+    country: "Canada",
+    elevation: "2,436m",
+    season: "November – May",
+    tagline: "The largest ski resort in North America. Two mountains, one village.",
+    description:
+      "Whistler Blackcomb is North America's largest ski resort — two vast mountains, over 8,000 acres of terrain, linked by the record-setting Peak 2 Peak Gondola, and the alpine host of the 2010 Winter Olympics. The pedestrian village at the base is among the finest in the world, and the season runs longer here than almost anywhere on the continent. We arrange ski-in stays, private guiding across both mountains, and transfers from Vancouver.",
+    image: "/images/resorts/whistler.jpg",
+  },
+  {
+    slug: "park-city",
+    name: "Park City",
+    region: "north-america",
+    country: "United States",
+    elevation: "3,056m",
+    season: "November – April",
+    tagline: "The largest ski resort in the United States, off a historic silver-mining Main Street.",
+    description:
+      "Park City is the biggest ski resort in the country — more than 7,300 acres after the Canyons connection — and one of the few where you ski straight down into a real town. Its Victorian Main Street, a legacy of Utah's silver boom, is lined with restaurants and galleries, and the light, dry Wasatch snow is some of the best in the world. Thirty-five minutes from Salt Lake City, it is also the easiest major resort to reach. We handle stays, instruction, and airport-to-slope logistics.",
+    image: "/images/resorts/park-city.jpg",
+  },
+  {
+    slug: "copper-mountain",
+    name: "Copper Mountain",
+    region: "north-america",
+    country: "United States",
+    elevation: "3,753m",
+    season: "November – April",
+    tagline: "The mountain that sorts itself. Naturally divided, quietly serious terrain.",
+    description:
+      "Copper Mountain is a favorite of people who know Colorado well. Its terrain is naturally divided by ability — beginners on one side, experts on the other — so groups of mixed levels ski together without compromise, and it stays far quieter than its famous neighbors on the I-70 corridor. High, snow-sure, and home to the US Ski Team's speed training center, it rewards skiers who want the mountain more than the scene. We arrange slopeside stays, instruction, and transfers from Denver.",
+    image: "/images/resorts/copper-mountain.jpg",
   },
   // ── EUROPE ───────────────────────────────────────────────────────────────
   {
