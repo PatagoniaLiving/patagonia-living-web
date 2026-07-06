@@ -3,14 +3,14 @@ import { useState } from "react";
 import Link from "next/link";
 import type { Article } from "@/lib/content";
 
-const FILTERS: { label: string; value: "all" | "patagonia" | "usa" }[] = [
+const FILTERS: { label: string; value: "all" | "patagonia" | "north-america" }[] = [
   { label: "All", value: "all" },
   { label: "Patagonia", value: "patagonia" },
-  { label: "United States", value: "usa" },
+  { label: "North America", value: "north-america" },
 ];
 
 export default function MountainsClient({ articles }: { articles: Article[] }) {
-  const [filter, setFilter] = useState<"all" | "patagonia" | "usa">("all");
+  const [filter, setFilter] = useState<"all" | "patagonia" | "north-america">("all");
   const shown = filter === "all" ? articles : articles.filter((a) => a.region === filter);
 
   return (

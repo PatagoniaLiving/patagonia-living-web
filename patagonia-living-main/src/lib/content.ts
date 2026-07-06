@@ -25,20 +25,11 @@ export type Region = {
 
 export const REGIONS: Region[] = [
   {
-    slug: "patagonia",
-    region: "Argentina",
-    name: "Patagonia",
+    slug: "north-america",
+    region: "North America",
+    name: "North America",
     blurb:
-      "Ski trips to Bariloche and Cerro Catedral. Private instruction, stays at Llao Llao and Arelauquen Golf & Country Club, and heli-skiing in the Argentine Andes.",
-    resorts: ["Cerro Catedral", "Llao Llao", "Arelauquen", "Chapelco"],
-    image: "/images/pat-heli.jpg",
-  },
-  {
-    slug: "usa",
-    region: "United States",
-    name: "United States",
-    blurb:
-      "Private ski lessons and curated stays at Vail, Beaver Creek, Aspen, Breckenridge, Deer Valley, Stowe, and Lake Tahoe. The iconic Rocky Mountain and New England resorts, handled without compromise.",
+      "Private ski lessons and curated stays across the Rockies, Utah, and the mountains of British Columbia. Vail, Aspen, Beaver Creek, Breckenridge, Deer Valley, Whistler, Park City, and more — the iconic North American resorts, handled without compromise.",
     resorts: ["Aspen", "Vail", "Beaver Creek", "Breckenridge", "Deer Valley", "Stowe", "Lake Tahoe"],
     image: "/images/usa-panel.jpg",
   },
@@ -51,6 +42,16 @@ export const REGIONS: Region[] = [
     resorts: ["Zermatt", "Courchevel", "St. Moritz", "Cortina", "Gstaad", "Megève", "Val Gardena", "Madonna"],
     image: "/images/europe-panel.jpg",
   },
+  {
+    slug: "patagonia",
+    region: "Argentina",
+    name: "Patagonia",
+    blurb:
+      "Ski trips to Bariloche and Cerro Catedral. Private instruction, stays at Llao Llao and Arelauquen Golf & Country Club, and heli-skiing in the Argentine Andes.",
+    resorts: ["Cerro Catedral", "Llao Llao", "Arelauquen"],
+    image: "/images/pat-heli.jpg",
+  },
+
 ];
 
 // ─── RESORTS ────────────────────────────────────────────────────────────────
@@ -58,7 +59,7 @@ export const REGIONS: Region[] = [
 export type Resort = {
   slug: string;
   name: string;
-  region: "patagonia" | "usa" | "europe";
+  region: "patagonia" | "north-america" | "europe";
   country: string;
   elevation: string;
   season: string;
@@ -81,23 +82,11 @@ export const RESORTS: Resort[] = [
       "Cerro Catedral is the largest ski resort in South America and the heart of Argentine ski culture. Set above the city of San Carlos de Bariloche on the shores of Nahuel Huapi lake, it offers 1,200 hectares of skiable terrain with views across the Patagonian Andes that are unlike anything in the northern hemisphere. Our hotels — Llao Llao, Arelauquen, Peuma Hue — are within 30 minutes of the base.",
     image: "/images/pat-heli.jpg",
   },
-  {
-    slug: "chapelco",
-    name: "Chapelco",
-    region: "patagonia",
-    country: "Argentina",
-    elevation: "1,980m",
-    season: "July – September",
-    tagline: "San Martín de los Andes. Quieter, wilder, exceptional.",
-    description:
-      "Chapelco, near San Martín de los Andes, is the quieter alternative to Bariloche — smaller, less crowded, and with terrain that rewards intermediate to advanced skiers. The town of San Martín is one of the most charming in all of Patagonia. Ideal for groups seeking a more off-the-beaten-path Argentine ski experience.",
-    image: "/images/patagonia-lake.jpg",
-  },
-  // ── USA ──────────────────────────────────────────────────────────────────
+  // ── NORTH AMERICA ──────────────────────────────────────────────────────────────────
   {
     slug: "aspen",
     name: "Aspen",
-    region: "usa",
+    region: "north-america",
     country: "United States",
     elevation: "3,813m",
     season: "November – April",
@@ -109,7 +98,7 @@ export const RESORTS: Resort[] = [
   {
     slug: "vail",
     name: "Vail",
-    region: "usa",
+    region: "north-america",
     country: "United States",
     elevation: "3,527m",
     season: "November – April",
@@ -121,7 +110,7 @@ export const RESORTS: Resort[] = [
   {
     slug: "beaver-creek",
     name: "Beaver Creek",
-    region: "usa",
+    region: "north-america",
     country: "United States",
     elevation: "3,488m",
     season: "November – April",
@@ -133,7 +122,7 @@ export const RESORTS: Resort[] = [
   {
     slug: "breckenridge",
     name: "Breckenridge",
-    region: "usa",
+    region: "north-america",
     country: "United States",
     elevation: "3,914m",
     season: "November – April",
@@ -145,7 +134,7 @@ export const RESORTS: Resort[] = [
   {
     slug: "deer-valley",
     name: "Deer Valley",
-    region: "usa",
+    region: "north-america",
     country: "United States",
     elevation: "2,918m",
     season: "December – April",
@@ -157,7 +146,7 @@ export const RESORTS: Resort[] = [
   {
     slug: "stowe",
     name: "Stowe",
-    region: "usa",
+    region: "north-america",
     country: "United States",
     elevation: "1,339m",
     season: "December – March",
@@ -169,7 +158,7 @@ export const RESORTS: Resort[] = [
   {
     slug: "lake-tahoe",
     name: "Lake Tahoe",
-    region: "usa",
+    region: "north-america",
     country: "United States",
     elevation: "2,637m",
     season: "November – April",
@@ -527,7 +516,7 @@ export type Article = {
   slug: string;
   category: string;                 // e.g. "Cerro Catedral"
   place: string;                    // e.g. "Patagonia, Argentina"
-  region: "patagonia" | "usa";      // filter group
+  region: "patagonia" | "north-america";      // filter group
   title: string;
   dek: string;                      // one-line standfirst
   readTime: string;
@@ -556,7 +545,7 @@ export const ARTICLES: Article[] = [
     slug: "vail",
     category: "Vail",
     place: "Colorado, United States",
-    region: "usa",
+    region: "north-america",
     title: "Why the Experts Keep Coming Back",
     dek: "Seven bowls, six miles of open snow, and a village built from memory.",
     readTime: "4 min",
@@ -572,7 +561,7 @@ export const ARTICLES: Article[] = [
     slug: "aspen",
     category: "Aspen",
     place: "Colorado, United States",
-    region: "usa",
+    region: "north-america",
     title: "Four Mountains, One Idea",
     dek: "A silver town that became four ski areas — and never lost the plot.",
     readTime: "4 min",
@@ -588,7 +577,7 @@ export const ARTICLES: Article[] = [
     slug: "beaver-creek",
     category: "Beaver Creek",
     place: "Colorado, United States",
-    region: "usa",
+    region: "north-america",
     title: "Colorado's Best-Kept Secret",
     dek: "The mountain the people who know choose over Vail.",
     readTime: "3 min",
@@ -604,7 +593,7 @@ export const ARTICLES: Article[] = [
     slug: "breckenridge",
     category: "Breckenridge",
     place: "Colorado, United States",
-    region: "usa",
+    region: "north-america",
     title: "Skiing Above the Trees",
     dek: "A gold-rush town, and the highest chairlift on the continent.",
     readTime: "4 min",
@@ -625,7 +614,7 @@ export type Hotel = {
   name: string;
   resort: string;
   resortSlug: string;
-  region: "patagonia" | "usa" | "europe";
+  region: "patagonia" | "north-america" | "europe";
   category: string;
   tagline: string;
   description: string;
@@ -743,7 +732,7 @@ export const HOTELS: Hotel[] = [
     name: "The Little Nell",
     resort: "Aspen",
     resortSlug: "aspen",
-    region: "usa",
+    region: "north-america",
     category: "Five-Star Ski-In/Out",
     tagline: "The only ski-in ski-out five-star hotel in Aspen.",
     description:
@@ -763,7 +752,7 @@ export const HOTELS: Hotel[] = [
     name: "Hotel Jerome",
     resort: "Aspen",
     resortSlug: "aspen",
-    region: "usa",
+    region: "north-america",
     category: "Historic Luxury Hotel",
     tagline: "Aspen's most storied address since 1889.",
     description:
@@ -783,7 +772,7 @@ export const HOTELS: Hotel[] = [
     name: "The St. Regis Aspen Resort",
     resort: "Aspen",
     resortSlug: "aspen",
-    region: "usa",
+    region: "north-america",
     category: "Five-Star Resort",
     tagline: "Refined ski luxury at the base of Aspen Mountain.",
     description:
@@ -803,7 +792,7 @@ export const HOTELS: Hotel[] = [
     name: "W Aspen",
     resort: "Aspen",
     resortSlug: "aspen",
-    region: "usa",
+    region: "north-america",
     category: "Boutique Luxury",
     tagline: "Bold design and energy at the heart of Aspen.",
     description:
@@ -825,7 +814,7 @@ export const HOTELS: Hotel[] = [
     name: "Four Seasons Resort Vail",
     resort: "Vail",
     resortSlug: "vail",
-    region: "usa",
+    region: "north-america",
     category: "Five-Star Resort",
     tagline: "Ski-in ski-out access at the heart of Vail Village.",
     description:
@@ -845,7 +834,7 @@ export const HOTELS: Hotel[] = [
     name: "Lodge at Vail",
     resort: "Vail",
     resortSlug: "vail",
-    region: "usa",
+    region: "north-america",
     category: "Classic Ski Lodge",
     tagline: "Vail's original luxury ski lodge, opened 1962.",
     description:
@@ -865,7 +854,7 @@ export const HOTELS: Hotel[] = [
     name: "The Sebastian — Vail",
     resort: "Vail",
     resortSlug: "vail",
-    region: "usa",
+    region: "north-america",
     category: "Boutique Hotel",
     tagline: "Art-filled boutique in the heart of Vail Village.",
     description:
@@ -885,7 +874,7 @@ export const HOTELS: Hotel[] = [
     name: "Grand Hyatt Vail",
     resort: "Vail",
     resortSlug: "vail",
-    region: "usa",
+    region: "north-america",
     category: "Luxury Resort",
     tagline: "Ski-in ski-out at Cascade Village, Vail.",
     description:
@@ -907,7 +896,7 @@ export const HOTELS: Hotel[] = [
     name: "The Ritz-Carlton, Bachelor Gulch",
     resort: "Beaver Creek",
     resortSlug: "beaver-creek",
-    region: "usa",
+    region: "north-america",
     category: "Iconic Mountain Resort",
     tagline: "The grand lodge of the Rockies — ski-in ski-out at Beaver Creek.",
     description:
@@ -927,7 +916,7 @@ export const HOTELS: Hotel[] = [
     name: "Park Hyatt Beaver Creek",
     resort: "Beaver Creek",
     resortSlug: "beaver-creek",
-    region: "usa",
+    region: "north-america",
     category: "Ski Resort Hotel",
     tagline: "Ski-in ski-out in the heart of Beaver Creek Village.",
     description:
@@ -947,7 +936,7 @@ export const HOTELS: Hotel[] = [
     name: "The Osprey at Beaver Creek",
     resort: "Beaver Creek",
     resortSlug: "beaver-creek",
-    region: "usa",
+    region: "north-america",
     category: "Boutique Ski Hotel",
     tagline: "Intimate ski-in ski-out boutique in Beaver Creek Village.",
     description:
@@ -969,7 +958,7 @@ export const HOTELS: Hotel[] = [
     name: "Grand Hyatt Breckenridge",
     resort: "Breckenridge",
     resortSlug: "breckenridge",
-    region: "usa",
+    region: "north-america",
     category: "Mountain Resort",
     tagline: "Ski-in ski-out luxury at the peak of Breckenridge.",
     description:
@@ -989,7 +978,7 @@ export const HOTELS: Hotel[] = [
     name: "One Ski Hill Place",
     resort: "Breckenridge",
     resortSlug: "breckenridge",
-    region: "usa",
+    region: "north-america",
     category: "Ski-In/Out Residence",
     tagline: "Residence-style ski-in ski-out at Peak 8.",
     description:
@@ -1011,7 +1000,7 @@ export const HOTELS: Hotel[] = [
     name: "St. Regis Deer Valley",
     resort: "Deer Valley",
     resortSlug: "deer-valley",
-    region: "usa",
+    region: "north-america",
     category: "Luxury Ski Hotel",
     tagline: "Butler service and ski-in ski-out at the heart of Deer Valley.",
     description:
@@ -1031,7 +1020,7 @@ export const HOTELS: Hotel[] = [
     name: "Montage Deer Valley",
     resort: "Deer Valley",
     resortSlug: "deer-valley",
-    region: "usa",
+    region: "north-america",
     category: "Luxury Resort",
     tagline: "Expansive mountain resort with ski-in ski-out at Deer Valley.",
     description:
@@ -1051,7 +1040,7 @@ export const HOTELS: Hotel[] = [
     name: "Stein Eriksen Lodge",
     resort: "Deer Valley",
     resortSlug: "deer-valley",
-    region: "usa",
+    region: "north-america",
     category: "Five-Star Mountain Lodge",
     tagline: "Deer Valley's legendary ski lodge, named for the Olympic champion.",
     description:
@@ -1073,7 +1062,7 @@ export const HOTELS: Hotel[] = [
     name: "Lodge at Spruce Peak",
     resort: "Stowe",
     resortSlug: "stowe",
-    region: "usa",
+    region: "north-america",
     category: "Ski-In/Out Lodge",
     tagline: "Ski-in ski-out in the heart of Stowe's mountain village.",
     description:
@@ -1093,7 +1082,7 @@ export const HOTELS: Hotel[] = [
     name: "Stowe Mountain Lodge",
     resort: "Stowe",
     resortSlug: "stowe",
-    region: "usa",
+    region: "north-america",
     category: "Mountain Resort",
     tagline: "Vermont's premier ski resort hotel.",
     description:
@@ -1113,7 +1102,7 @@ export const HOTELS: Hotel[] = [
     name: "Topnotch Resort",
     resort: "Stowe",
     resortSlug: "stowe",
-    region: "usa",
+    region: "north-america",
     category: "Spa Resort",
     tagline: "Vermont's most acclaimed spa resort, steps from the mountain.",
     description:
@@ -1135,7 +1124,7 @@ export const HOTELS: Hotel[] = [
     name: "The Ritz-Carlton, Lake Tahoe",
     resort: "Lake Tahoe",
     resortSlug: "lake-tahoe",
-    region: "usa",
+    region: "north-america",
     category: "Five-Star Mountain Resort",
     tagline: "The definitive luxury ski hotel on Lake Tahoe's north shore.",
     description:
@@ -1155,7 +1144,7 @@ export const HOTELS: Hotel[] = [
     name: "Edgewood Tahoe Resort",
     resort: "Lake Tahoe",
     resortSlug: "lake-tahoe",
-    region: "usa",
+    region: "north-america",
     category: "Lakefront Resort",
     tagline: "Direct lake frontage and a championship golf course on South Tahoe.",
     description:
@@ -1175,7 +1164,7 @@ export const HOTELS: Hotel[] = [
     name: "Hyatt Regency Lake Tahoe",
     resort: "Lake Tahoe",
     resortSlug: "lake-tahoe",
-    region: "usa",
+    region: "north-america",
     category: "Lakefront Hotel",
     tagline: "Private beach, lakeside dining, and Incline Village ski access.",
     description:

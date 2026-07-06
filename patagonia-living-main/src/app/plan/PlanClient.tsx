@@ -80,7 +80,7 @@ export default function PlanClient() {
                 onChange={(e) => set("destination", e.target.value)}>
                 <option>Not sure yet</option>
                 <option>Patagonia</option>
-                <option>United States</option>
+                <option>North America</option>
                 <option>Europe</option>
                 <option>A mix</option>
               </select>

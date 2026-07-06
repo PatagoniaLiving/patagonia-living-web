@@ -34,7 +34,7 @@ export default async function DestinationPage({
   if (!region) notFound();
 
   const otherRegions = REGIONS.filter((r) => r.slug !== slug);
-  const regionSlug = slug as "patagonia" | "usa" | "europe";
+  const regionSlug = slug as "patagonia" | "north-america" | "europe";
   const regionResorts = RESORTS.filter((r) => r.region === regionSlug);
   const featuredHotels = HOTELS.filter((h) => h.region === regionSlug && h.featured);
   const allHotels = HOTELS.filter((h) => h.region === regionSlug);
